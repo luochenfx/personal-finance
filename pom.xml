@@ -18,6 +18,7 @@
 		<dynamic-datasource>3.5.1</dynamic-datasource>
 		<druid>1.2.11</druid>
 		<jackson>2.13.3</jackson>
+		<mybatis-plus>3.5.2</mybatis-plus>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -68,6 +69,13 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>${mybatis-plus}</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.baomidou/dynamic-datasource-spring-boot-starter -->
 		<dependency>
 			<groupId>com.baomidou</groupId>
