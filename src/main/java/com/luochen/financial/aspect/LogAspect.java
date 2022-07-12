@@ -27,7 +27,6 @@ public class LogAspect {
 
 	@Around("logPointcut()")
 	public Object timeConsumingRecord(ProceedingJoinPoint joinPoint) throws Throwable {
-		log.debug("切入点: " + joinPoint + "\t");
 		long start = System.currentTimeMillis();
 		try {
 			Object result = joinPoint.proceed();

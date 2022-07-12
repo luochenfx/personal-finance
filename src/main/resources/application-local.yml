@@ -35,3 +35,15 @@ spring:
           password: root
           driver-class-name: com.mysql.cj.jdbc.Driver
 
+
+mybatis-plus:
+  config-location: classpath:mybatis/mybatis_config.xml
+  mapper-locations: classpath*:mybatis/mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  type-aliases-package: com.luochen
+  global-config:
+    db-config:
+      logic-delete-field: delete
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      table-underline: false

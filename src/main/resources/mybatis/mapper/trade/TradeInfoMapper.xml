@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luochen.financial.trade.mapper.TradeInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.luochen.financial.trade.entity.TradeInfo">
+        <id column="id" property="id" />
+        <result column="trade_source" property="tradeSource" />
+        <result column="type" property="type" />
+        <result column="seller" property="seller" />
+        <result column="product" property="product" />
+        <result column="amount" property="amount" />
+        <result column="income_expenditure" property="incomeExpenditure" />
+        <result column="trade_status" property="tradeStatus" />
+        <result column="memo" property="memo" />
+        <result column="fund_status" property="fundStatus" />
+        <result column="create_time" property="createTime" />
+        <result column="pay_time" property="payTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, trade_source, type, seller, product, amount, income_expenditure, trade_status, memo, fund_status, create_time, pay_time, update_time
+    </sql>
+
+</mapper>
