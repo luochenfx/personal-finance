@@ -22,8 +22,8 @@ import java.util.List;
 public class WebConfig implements WebMvcConfigurer {
 	@Override
 	public void extendMessageConverters(@NotNull List<HttpMessageConverter<?>> converters) {
-		System.err.println("WebConfig.extendMessageConverters");
-		System.err.println(converters);
+		System.out.println("WebConfig.extendMessageConverters");
+		System.out.println(converters);
 	}
 
 	@Bean
