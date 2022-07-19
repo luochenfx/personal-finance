@@ -122,5 +122,28 @@ public class AlipayTransactionRecord implements Serializable {
     @TableField("fund_status")
     private String fundStatus;
 
+    /**
+     * 收支
+     */
+    public enum IncomeExpenditure {
+        /**
+         * 收入
+         */
+        INCOME("收入"),
+        /**
+         * 支出
+         */
+        EXPENDITURE("支出");
+
+        private final String value;
+
+        IncomeExpenditure(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
 
 }

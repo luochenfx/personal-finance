@@ -6,6 +6,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 
 /**
  * @author luochenfx
@@ -27,15 +28,16 @@ public class LogAspect {
 
 	@Around("logPointcut()")
 	public Object timeConsumingRecord(ProceedingJoinPoint joinPoint) throws Throwable {
-		long start = System.currentTimeMillis();
+		StopWatch stopWatch = new StopWatch(joinPoint.getSignature().getDeclaringTypeName());
+		stopWatch.start(joinPoint.getSignature().getName());
 		try {
 			Object result = joinPoint.proceed();
-			long end = System.currentTimeMillis();
-			log.info(" " + joinPoint + "\t 耗时 : " + (end - start) + " ms! \n" + "返回结果:" + result);
+			stopWatch.stop();
+			log.info(stopWatch.prettyPrint());
 			return result;
 		} catch (Throwable e) {
-			long end = System.currentTimeMillis();
-			log.error(" " + joinPoint + "\t 耗时 : " + (end - start) + " ms  -- 异常 : " + e.getMessage() , e);
+			stopWatch.stop();
+			log.info(stopWatch.prettyPrint());
 			throw e;
 		}
 	}
