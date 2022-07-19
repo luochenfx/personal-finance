@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.luochen</groupId>
 	<artifactId>financial</artifactId>
-	<version>0.0.1</version>
+	<version>${revision}</version>
 	<name>financial</name>
 	<packaging>pom</packaging>
 
@@ -27,6 +27,8 @@
 		<jackson>2.13.3</jackson>
 		<mybatis-plus>3.5.2</mybatis-plus>
 		<json-web-token>0.11.5</json-web-token>
+		<!-- project version -->
+		<revision>0.0.1-SNAPSHOT</revision>
 	</properties>
 	<dependencies>
 		<dependency>
