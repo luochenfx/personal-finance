@@ -2,6 +2,9 @@ package com.luochen.financial.trade.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.luochen.financial.trade.entity.AlipayTransactionRecord;
+import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,9 @@ import com.luochen.financial.trade.entity.AlipayTransactionRecord;
  */
 public interface IAlipayTransactionRecordService extends IService<AlipayTransactionRecord> {
 
+	/**
+	 * 按月份查询收支情况
+	 * @return TradeIncomeExpenditure
+	 */
+	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
 }

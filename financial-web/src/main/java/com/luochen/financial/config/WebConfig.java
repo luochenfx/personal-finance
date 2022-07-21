@@ -27,6 +27,11 @@ public class WebConfig implements WebMvcConfigurer {
 		System.out.println(converters);
 	}
 
+	/**
+	 * jackson 序列化器
+	 * @param builder jackson builder
+	 * @return jackson
+	 */
 	@Bean
 	@Primary
 	@ConditionalOnMissingBean(ObjectMapper.class)

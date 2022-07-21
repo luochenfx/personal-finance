@@ -4,6 +4,7 @@ package com.luochen.financial.trade.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.luochen.financial.trade.entity.AlipayTransactionRecord;
+import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.service.IAlipayTransactionRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +45,11 @@ public class AlipayTransactionRecordController {
 		LambdaQueryWrapper<AlipayTransactionRecord> query = Wrappers.lambdaQuery();
 		query.eq(AlipayTransactionRecord::getIncomeExpenditure, AlipayTransactionRecord.IncomeExpenditure.EXPENDITURE.getValue());
 		return alipayTransactionRecordService.list(query);
+	}
+
+	@GetMapping("/incomeExpenditureByAllMonth")
+	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
+		return alipayTransactionRecordService.getIncomeExpenditureByAllMonth();
 	}
 
 }

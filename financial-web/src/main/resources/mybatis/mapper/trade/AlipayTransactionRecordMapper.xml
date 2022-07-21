@@ -27,4 +27,19 @@
         trade_no, out_trade_no, create_time, pay_time, update_time, trade_source, type, seller, product, amount, income_expenditure, trade_status, service_money, refund, memo, fund_status
     </sql>
 
+    <select id="getIncomeExpenditureByAllMonth" resultType="com.luochen.financial.trade.entity.TradeIncomeExpenditure">
+        SELECT
+        DATE_FORMAT( pay_time, '%Y-%m-%d' ) date,
+        sum(
+        IF
+        ( income_expenditure = '支出', amount, 0 )) expenditure,
+        sum(
+        IF
+        ( income_expenditure = '收入', amount, 0 )) income
+        FROM
+        alipay_transaction_record
+        GROUP BY
+        DATE_FORMAT( pay_time, '%Y-%m-%d' );
+    </select>
+
 </mapper>
