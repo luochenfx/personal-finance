@@ -13,27 +13,27 @@ import java.util.Date;
 
 /**
  * <p>
- * 
+ * 微信账单
  * </p>
  *
  * @author luochen
- * @since 2022-07-12
+ * @since 2022-07-26
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("trade_info")
-public class TradeInfo implements Serializable {
+@TableName("wx_transaction_record")
+public class WxTransactionRecord implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * id
+     * 交易号
      */
-    @TableId(value = "id", type = IdType.ASSIGN_ID)
-    private Long id;
+    @TableId(value = "trade_no", type = IdType.ASSIGN_ID)
+    private String tradeNo;
 
     /**
-     * 交易来源
+     * 交易来源(wx是商户号)
      */
     @TableField("trade_source")
     private String tradeSource;
@@ -69,22 +69,16 @@ public class TradeInfo implements Serializable {
     private String incomeExpenditure;
 
     /**
+     * 支付方式
+     */
+    @TableField("payment_method")
+    private String paymentMethod;
+
+    /**
      * 交易状态
      */
     @TableField("trade_status")
     private String tradeStatus;
-
-    /**
-     * 备注
-     */
-    @TableField("memo")
-    private String memo;
-
-    /**
-     * 资金状态
-     */
-    @TableField("fund_status")
-    private String fundStatus;
 
     /**
      * 交易创建时间
@@ -97,46 +91,6 @@ public class TradeInfo implements Serializable {
      */
     @TableField("pay_time")
     private Date payTime;
-
-    /**
-     * 修改时间
-     */
-    @TableField("update_time")
-    private Date updateTime;
-
-    @TableField("record_source")
-    private String recordSource;
-
-    /**
-     * 账单来源
-     */
-    public enum RecordSource{
-
-     	/**
-     	 * 支付宝
-     	 */
-     	ALIPAY("支付宝"),
-
-     	/**
-     	 * 微信
-     	 */
-     	WX("微信"),
-
-        /**
-         * 手动
-         */
-        MANUAL("手动添加");
-
-     	private final String value;
-
-     	RecordSource(String value){
-     		this.value = value;
-     	}
-
-     	public String getValue(){
-     		return value;
-     	}
-    }
 
 
 }
