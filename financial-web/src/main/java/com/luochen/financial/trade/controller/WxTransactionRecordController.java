@@ -31,5 +31,11 @@ public class WxTransactionRecordController {
 	}
 
 
+	public List<WxTransactionRecord> statistics(WxTransactionRecord wxTransactionRecord) {
+		return wxTransactionRecordService.list();
+	}
+
+
+
 
 }
