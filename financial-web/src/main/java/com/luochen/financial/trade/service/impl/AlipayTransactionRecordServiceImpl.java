@@ -1,5 +1,7 @@
 package com.luochen.financial.trade.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.luochen.financial.trade.entity.AlipayTransactionRecord;
 import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
@@ -24,4 +26,11 @@ public class AlipayTransactionRecordServiceImpl extends ServiceImpl<AlipayTransa
 	public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth() {
 		return baseMapper.getIncomeExpenditureByAllMonth();
 	}
+
+	public List<AlipayTransactionRecord> fundTransferOfAll() {
+		LambdaQueryWrapper<AlipayTransactionRecord> query = Wrappers.lambdaQuery();
+		query.eq(AlipayTransactionRecord::getFundStatus, AlipayTransactionRecord.FundStatus.FUND_TRANS.getValue());
+		return baseMapper.selectList(query);
+	}
+
 }

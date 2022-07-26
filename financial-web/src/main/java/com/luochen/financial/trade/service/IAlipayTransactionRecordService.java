@@ -21,4 +21,10 @@ public interface IAlipayTransactionRecordService extends IService<AlipayTransact
 	 * @return TradeIncomeExpenditure
 	 */
 	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
+
+	/**
+	 * 查询所有转账记录
+	 * @return List<AlipayTransactionRecord>
+	 */
+	List<AlipayTransactionRecord> fundTransferOfAll();
 }

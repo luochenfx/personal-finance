@@ -27,6 +27,7 @@
 		<jackson>2.13.3</jackson>
 		<mybatis-plus>3.5.2</mybatis-plus>
 		<json-web-token>0.11.5</json-web-token>
+		<guava>31.1-jre</guava>
 		<!-- project version -->
 		<revision>0.0.1-SNAPSHOT</revision>
 	</properties>
@@ -101,6 +102,11 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava}</version>
 		</dependency>
 
 

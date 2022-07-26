@@ -48,8 +48,17 @@ public class AlipayTransactionRecordController {
 	}
 
 	@GetMapping("/incomeExpenditureByAllMonth")
-	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
+	public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
 		return alipayTransactionRecordService.getIncomeExpenditureByAllMonth();
+	}
+
+	/**
+	 * 查询所有的转账记录
+	 * @return 转账记录列表
+	 */
+	@GetMapping("/fundTransferOfAll")
+	public List<AlipayTransactionRecord> fundTransferOfAll(){
+		return alipayTransactionRecordService.fundTransferOfAll();
 	}
 
 }

@@ -148,4 +148,30 @@ public class AlipayTransactionRecord implements Serializable {
         }
     }
 
+    public enum FundStatus {
+        /**
+         * 收入
+         */
+        INCOME("已收入"),
+        /**
+         * 支出
+         */
+        EXPENDITURE("已支出"),
+
+        /**
+         * 资金转移
+         */
+        FUND_TRANS("资金转移");
+
+        private final String value;
+
+        FundStatus(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
+
 }

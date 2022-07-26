@@ -2,6 +2,9 @@ spring:
   profiles:
     active: dev
 
+  devtools:
+    restart:
+      enabled=true:
 
   autoconfigure:
     exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
