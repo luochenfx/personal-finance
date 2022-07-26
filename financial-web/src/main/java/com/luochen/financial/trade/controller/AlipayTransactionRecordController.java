@@ -61,4 +61,6 @@ public class AlipayTransactionRecordController {
 		return alipayTransactionRecordService.fundTransferOfAll();
 	}
 
+
+
 }
