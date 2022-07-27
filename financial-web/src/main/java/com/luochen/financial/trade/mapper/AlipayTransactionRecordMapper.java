@@ -6,6 +6,7 @@ import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -23,4 +24,10 @@ public interface AlipayTransactionRecordMapper extends BaseMapper<AlipayTransact
 	 * @return 月份和收支
 	 */
 	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
+
+	/**
+	 * 查询所有转账记录
+	 * @return 转账记录
+	 */
+	List<Map<String,Object>> statisticsByFundStatus();
 }

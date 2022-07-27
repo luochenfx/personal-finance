@@ -5,6 +5,7 @@ import com.luochen.financial.trade.entity.AlipayTransactionRecord;
 import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -27,4 +28,10 @@ public interface IAlipayTransactionRecordService extends IService<AlipayTransact
 	 * @return List<AlipayTransactionRecord>
 	 */
 	List<AlipayTransactionRecord> fundTransferOfAll();
+
+	/**
+	 * 查询所有转账记录
+	 * @return List<AlipayTransactionRecord>
+	 */
+	List<Map<String,Object>> statisticsByFundStatus();
 }
