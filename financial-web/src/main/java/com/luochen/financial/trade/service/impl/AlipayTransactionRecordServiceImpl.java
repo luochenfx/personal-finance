@@ -10,6 +10,7 @@ import com.luochen.financial.trade.service.IAlipayTransactionRecordService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -30,7 +31,13 @@ public class AlipayTransactionRecordServiceImpl extends ServiceImpl<AlipayTransa
 	public List<AlipayTransactionRecord> fundTransferOfAll() {
 		LambdaQueryWrapper<AlipayTransactionRecord> query = Wrappers.lambdaQuery();
 		query.eq(AlipayTransactionRecord::getFundStatus, AlipayTransactionRecord.FundStatus.FUND_TRANS.getValue());
+		query.orderByDesc(AlipayTransactionRecord::getPayTime);
 		return baseMapper.selectList(query);
+	}
+
+	@Override
+	public List<Map<String, Object>> statisticsByFundStatus() {
+		return baseMapper.statisticsByFundStatus();
 	}
 
 }

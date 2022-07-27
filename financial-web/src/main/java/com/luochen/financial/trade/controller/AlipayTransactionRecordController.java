@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -37,6 +38,7 @@ public class AlipayTransactionRecordController {
 	public List<AlipayTransactionRecord> getIncome(){
 		LambdaQueryWrapper<AlipayTransactionRecord> query = Wrappers.lambdaQuery();
 		query.eq(AlipayTransactionRecord::getIncomeExpenditure, AlipayTransactionRecord.IncomeExpenditure.INCOME.getValue());
+		query.orderByDesc(AlipayTransactionRecord::getPayTime);
 		return alipayTransactionRecordService.list(query);
 	}
 
@@ -44,6 +46,7 @@ public class AlipayTransactionRecordController {
 	public List<AlipayTransactionRecord> getExpenditure(){
 		LambdaQueryWrapper<AlipayTransactionRecord> query = Wrappers.lambdaQuery();
 		query.eq(AlipayTransactionRecord::getIncomeExpenditure, AlipayTransactionRecord.IncomeExpenditure.EXPENDITURE.getValue());
+		query.orderByDesc(AlipayTransactionRecord::getPayTime);
 		return alipayTransactionRecordService.list(query);
 	}
 
@@ -63,4 +66,8 @@ public class AlipayTransactionRecordController {
 
 
 
+	@GetMapping("/statisticsByFundStatus")
+	public List<Map<String, Object>> statisticsByFundStatus(){
+		return alipayTransactionRecordService.statisticsByFundStatus();
+	}
 }

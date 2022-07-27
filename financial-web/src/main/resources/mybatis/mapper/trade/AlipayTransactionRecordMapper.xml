@@ -39,7 +39,23 @@
         FROM
         alipay_transaction_record
         GROUP BY
-        DATE_FORMAT( pay_time, '%Y-%m-%d' );
+        DATE_FORMAT( pay_time, '%Y-%m-%d' )
+        ORDER BY
+        DATE_FORMAT( pay_time, '%Y-%m-%d' )
+    </select>
+
+    <select id="statisticsByFundStatus" resultType="map">
+        SELECT
+        date_format( pay_time, '%Y-%m-%d' ) pay_time,
+        fund_status,
+        sum( amount )
+        FROM
+        alipay_transaction_record
+        GROUP BY
+        date_format( pay_time, '%Y-%m-%d' ),
+        fund_status
+        ORDER BY
+        date_format( pay_time, '%Y-%m-%d' )
     </select>
 
 </mapper>
