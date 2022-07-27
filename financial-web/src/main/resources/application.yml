@@ -38,7 +38,7 @@ spring:
 
 
 mybatis-plus:
-  config-location: classpath:mybatis/mybatis_config.xml
+#  config-location: classpath:mybatis/mybatis_config.xml
   mapper-locations: classpath*:mybatis/mapper/**/*.xml
   type-aliases-package: com.luochen
   global-config:
@@ -47,3 +47,5 @@ mybatis-plus:
       logic-delete-value: 1
       logic-not-delete-value: 0
       table-underline: false
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -124,6 +124,9 @@ public class AlipayTransactionRecord implements Serializable {
     @TableField("fund_status")
     private String fundStatus;
 
+    @TableField(exist = false)
+    private String dateTimeRange;
+
     /**
      * 收支
      */

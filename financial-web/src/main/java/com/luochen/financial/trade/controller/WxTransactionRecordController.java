@@ -1,6 +1,7 @@
 package com.luochen.financial.trade.controller;
 
 
+import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.entity.WxTransactionRecord;
 import com.luochen.financial.trade.service.IWxTransactionRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,16 @@ public class WxTransactionRecordController {
 		return wxTransactionRecordService.list();
 	}
 
+
+	@GetMapping("/list")
+	public List<WxTransactionRecord> list(WxTransactionRecord wxTransactionRecord) {
+		return wxTransactionRecordService.list(wxTransactionRecord);
+	}
+
+	@GetMapping("/incomeExpenditureByAllMonth")
+	public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
+		return wxTransactionRecordService.getIncomeExpenditureByAllMonth();
+	}
 
 	public List<WxTransactionRecord> statistics(WxTransactionRecord wxTransactionRecord) {
 		return wxTransactionRecordService.list();
