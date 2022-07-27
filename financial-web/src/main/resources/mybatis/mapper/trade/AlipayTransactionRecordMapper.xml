@@ -41,7 +41,7 @@
         GROUP BY
         DATE_FORMAT( pay_time, '%Y-%m-%d' )
         ORDER BY
-        DATE_FORMAT( pay_time, '%Y-%m-%d' ) desc
+        DATE_FORMAT( pay_time, '%Y-%m-%d' )
     </select>
 
     <select id="statisticsByFundStatus" resultType="map">
