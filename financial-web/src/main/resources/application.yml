@@ -38,7 +38,7 @@ spring:
 
 
 mybatis-plus:
-  config-location: classpath:mybatis/mybatis_config.xml
+#  config-location: classpath:mybatis/mybatis_config.xml
   mapper-locations: classpath*:mybatis/mapper/**/*.xml
   type-aliases-package: com.luochen
   global-config:
