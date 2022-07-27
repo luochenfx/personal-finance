@@ -1,7 +1,10 @@
 package com.luochen.financial.trade.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.entity.WxTransactionRecord;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.luochen.financial.trade.entity.WxTransactionRecord;
  */
 public interface IWxTransactionRecordService extends IService<WxTransactionRecord> {
 
+	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
 }

@@ -1,8 +1,11 @@
 package com.luochen.financial.trade.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.entity.WxTransactionRecord;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +18,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface WxTransactionRecordMapper extends BaseMapper<WxTransactionRecord> {
 
+	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
 }
