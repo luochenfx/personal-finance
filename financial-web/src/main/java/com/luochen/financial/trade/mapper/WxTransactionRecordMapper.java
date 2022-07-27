@@ -2,6 +2,7 @@ package com.luochen.financial.trade.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.luochen.financial.trade.entity.WxTransactionRecord;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.luochen.financial.trade.entity.WxTransactionRecord;
  * @author luochen
  * @since 2022-07-26
  */
+@Mapper
 public interface WxTransactionRecordMapper extends BaseMapper<WxTransactionRecord> {
 
 }
