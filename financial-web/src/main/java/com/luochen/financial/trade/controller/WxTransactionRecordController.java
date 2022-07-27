@@ -1,8 +1,6 @@
 package com.luochen.financial.trade.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.entity.WxTransactionRecord;
 import com.luochen.financial.trade.service.IWxTransactionRecordService;
@@ -36,9 +34,7 @@ public class WxTransactionRecordController {
 
 	@GetMapping("/list")
 	public List<WxTransactionRecord> list(WxTransactionRecord wxTransactionRecord) {
-		LambdaQueryWrapper<WxTransactionRecord> query = Wrappers.lambdaQuery(wxTransactionRecord);
-		query.orderByDesc(WxTransactionRecord::getPayTime);
-		return wxTransactionRecordService.list(query);
+		return wxTransactionRecordService.list(wxTransactionRecord);
 	}
 
 	@GetMapping("/incomeExpenditureByAllMonth")

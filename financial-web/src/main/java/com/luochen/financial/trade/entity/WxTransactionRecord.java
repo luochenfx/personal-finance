@@ -94,5 +94,7 @@ public class WxTransactionRecord implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date payTime;
 
+    @TableField(exist = false)
+    private String dateTimeRange;
 
 }

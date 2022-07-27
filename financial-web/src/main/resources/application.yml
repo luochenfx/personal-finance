@@ -47,3 +47,5 @@ mybatis-plus:
       logic-delete-value: 1
       logic-not-delete-value: 0
       table-underline: false
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
