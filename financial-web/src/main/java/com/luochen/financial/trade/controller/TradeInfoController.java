@@ -30,4 +30,10 @@ public class TradeInfoController {
 		return tradeInfoService.list();
 	}
 
+
+	@GetMapping("/list")
+	public List<TradeInfo> list(TradeInfo tradeInfo) {
+		return tradeInfoService.list(tradeInfo);
+	}
+
 }

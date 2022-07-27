@@ -107,6 +107,9 @@ public class TradeInfo implements Serializable {
     @TableField("record_source")
     private String recordSource;
 
+	@TableField(exist = false)
+	private String dateTimeRange;
+
     /**
      * 账单来源
      */
