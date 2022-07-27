@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * API 版本控制
+ */
 public class ApiVersionCondition implements RequestCondition<ApiVersionCondition> {
 	private final static Pattern VERSION_PREFIX_PATTERN = Pattern.compile(".*v(\\d+).*");
 

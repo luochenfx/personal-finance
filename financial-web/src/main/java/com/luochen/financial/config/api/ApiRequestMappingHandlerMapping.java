@@ -2,12 +2,19 @@ package com.luochen.financial.config.api;
 
 import com.luochen.financial.annotation.ApiVersion;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.condition.RequestCondition;
+import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.lang.reflect.Method;
 
+/**
+ * Creates {@link RequestMappingInfo} instances from type and method-level
+ * {@link RequestMapping @RequestMapping} annotations in
+ * {@link Controller @Controller} classes.
+ */
 public class ApiRequestMappingHandlerMapping extends RequestMappingHandlerMapping {
 	private static final String VERSION_FLAG = "{version}";
 
