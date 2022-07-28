@@ -1,6 +1,7 @@
 package com.luochen.financial.trade.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.entity.TradeInfo;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface ITradeInfoService extends IService<TradeInfo> {
 	 * @return 交易信息列表
 	 */
 	List<TradeInfo> list(TradeInfo tradeInfo);
+
+	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
 }

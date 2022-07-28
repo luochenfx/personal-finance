@@ -3,6 +3,7 @@ package com.luochen.financial.trade.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.entity.TradeInfo;
 import com.luochen.financial.trade.mapper.TradeInfoMapper;
 import com.luochen.financial.trade.service.ITradeInfoService;
@@ -32,5 +33,10 @@ public class TradeInfoServiceImpl extends ServiceImpl<TradeInfoMapper, TradeInfo
 		}
 		query.orderByAsc(TradeInfo::getPayTime);
 		return list(query);
+	}
+
+	@Override
+	public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth() {
+		return baseMapper.getIncomeExpenditureByAllMonth();
 	}
 }
