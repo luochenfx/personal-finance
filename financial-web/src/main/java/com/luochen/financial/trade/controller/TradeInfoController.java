@@ -63,4 +63,9 @@ public class TradeInfoController {
 		return tradeInfoService.getIncomeExpenditureByAllMonth();
 	}
 
+	@GetMapping("/spendingThisMonth")
+	public double spendingThisMonth(){
+		return tradeInfoService.spendingThisMonth();
+	}
+
 }

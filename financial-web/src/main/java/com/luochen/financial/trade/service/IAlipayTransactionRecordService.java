@@ -34,4 +34,10 @@ public interface IAlipayTransactionRecordService extends IService<AlipayTransact
 	 * @return List<AlipayTransactionRecord>
 	 */
 	List<Map<String,Object>> statisticsByFundStatus();
+
+	/**
+	 * 获取本月消费金额
+	 * @return 本月消费金额
+	 */
+	double spendingThisMonth();
 }

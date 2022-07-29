@@ -24,4 +24,10 @@ public interface IWxTransactionRecordService extends IService<WxTransactionRecor
 	 * @return boolean
 	 */
 	List<WxTransactionRecord> list(WxTransactionRecord wxTransactionRecord);
+
+	/**
+	 * 获取本月消费金额
+	 * @return 本月消费金额
+	 */
+	double spendingThisMonth();
 }

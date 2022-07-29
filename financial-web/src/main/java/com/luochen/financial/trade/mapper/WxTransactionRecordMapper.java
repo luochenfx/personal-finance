@@ -19,4 +19,10 @@ import java.util.List;
 public interface WxTransactionRecordMapper extends BaseMapper<WxTransactionRecord> {
 
 	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
+
+	/**
+	 * 获取本月消费金额
+	 * @return 本月消费金额
+	 */
+	double spendingThisMonth();
 }

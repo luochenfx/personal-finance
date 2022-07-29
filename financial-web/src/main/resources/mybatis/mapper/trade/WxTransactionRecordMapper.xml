@@ -38,4 +38,16 @@
         ORDER BY DATE_FORMAT( pay_time, '%Y-%m-%d' )
     </select>
 
+    <select id="spendingThisMonth" resultType="double">
+        SELECT
+        IFNULL( sum( amount ), 0 ) total
+        FROM
+        wx_transaction_record
+        WHERE
+        DATE_FORMAT( pay_time, '%Y%m' ) = DATE_FORMAT(
+        CURDATE(),
+        '%Y%m')
+        AND income_expenditure = '支出'
+    </select>
+
 </mapper>

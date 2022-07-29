@@ -24,4 +24,10 @@ public interface ITradeInfoService extends IService<TradeInfo> {
 	List<TradeInfo> list(TradeInfo tradeInfo);
 
 	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
+
+	/**
+	 * 获取本月消费金额
+	 * @return 本月消费金额
+	 */
+	double spendingThisMonth();
 }

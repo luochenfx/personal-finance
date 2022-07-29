@@ -30,4 +30,10 @@ public interface AlipayTransactionRecordMapper extends BaseMapper<AlipayTransact
 	 * @return 转账记录
 	 */
 	List<Map<String,Object>> statisticsByFundStatus();
+
+	/**
+	 * 获取本月消费金额
+	 * @return 本月消费金额
+	 */
+	double spendingThisMonth();
 }

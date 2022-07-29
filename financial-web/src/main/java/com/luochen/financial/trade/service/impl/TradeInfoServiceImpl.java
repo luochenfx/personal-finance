@@ -39,4 +39,9 @@ public class TradeInfoServiceImpl extends ServiceImpl<TradeInfoMapper, TradeInfo
 	public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth() {
 		return baseMapper.getIncomeExpenditureByAllMonth();
 	}
+
+	@Override
+	public double spendingThisMonth() {
+		return baseMapper.spendingThisMonth();
+	}
 }

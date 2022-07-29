@@ -39,4 +39,9 @@ public class WxTransactionRecordServiceImpl extends ServiceImpl<WxTransactionRec
 		}
 		return list(query);
 	}
+
+	@Override
+	public double spendingThisMonth() {
+		return baseMapper.spendingThisMonth();
+	}
 }

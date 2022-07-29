@@ -70,4 +70,9 @@ public class AlipayTransactionRecordController {
 	public List<Map<String, Object>> statisticsByFundStatus(){
 		return alipayTransactionRecordService.statisticsByFundStatus();
 	}
+
+	@GetMapping("/spendingThisMonth")
+	public double spendingThisMonth(){
+		return alipayTransactionRecordService.spendingThisMonth();
+	}
 }

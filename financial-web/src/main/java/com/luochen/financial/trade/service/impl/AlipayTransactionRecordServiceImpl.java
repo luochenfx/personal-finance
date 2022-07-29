@@ -40,4 +40,9 @@ public class AlipayTransactionRecordServiceImpl extends ServiceImpl<AlipayTransa
 		return baseMapper.statisticsByFundStatus();
 	}
 
+	@Override
+	public double spendingThisMonth() {
+		return baseMapper.spendingThisMonth();
+	}
+
 }

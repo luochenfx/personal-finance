@@ -47,6 +47,10 @@ public class WxTransactionRecordController {
 	}
 
 
+	@GetMapping("/spendingThisMonth")
+	public double spendingThisMonth(){
+		return wxTransactionRecordService.spendingThisMonth();
+	}
 
 
 }
