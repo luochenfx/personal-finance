@@ -7,9 +7,12 @@ import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.entity.TradeInfo;
 import com.luochen.financial.trade.mapper.TradeInfoMapper;
 import com.luochen.financial.trade.service.ITradeInfoService;
+import com.luochen.financial.user.service.IUserBalanceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,6 +25,9 @@ import java.util.List;
  */
 @Service
 public class TradeInfoServiceImpl extends ServiceImpl<TradeInfoMapper, TradeInfo> implements ITradeInfoService {
+
+	@Autowired
+	private IUserBalanceService userBalanceService;
 
 	@Override
 	public List<TradeInfo> list(TradeInfo tradeInfo) {
@@ -43,5 +49,11 @@ public class TradeInfoServiceImpl extends ServiceImpl<TradeInfoMapper, TradeInfo
 	@Override
 	public double spendingThisMonth() {
 		return baseMapper.spendingThisMonth();
+	}
+
+	public boolean addTradeInfo(TradeInfo tradeInfo) {
+		tradeInfo.setRecordSource(TradeInfo.RecordSource.MANUAL.getValue());
+		tradeInfo.setCreateTime(new Date());
+		return save(tradeInfo);
 	}
 }

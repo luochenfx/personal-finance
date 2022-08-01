@@ -2,6 +2,7 @@ package com.luochen.financial.user.controller;
 
 
 import com.luochen.financial.user.entity.UserAssets;
+import com.luochen.financial.user.entity.UserBalance;
 import com.luochen.financial.user.service.IUserBalanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +25,18 @@ public class UserBalanceController {
 	private IUserBalanceService userBalanceService;
 
 	@GetMapping("/inquireBalance")
-	public UserAssets inquireBalance(String userId) {
+	public UserAssets inquireBalance(Long userId) {
 		return userBalanceService.getUserAssets(userId);
+	}
+
+	/**
+	 * 获取用户平台资产
+	 * @param userBalance userBalance
+	 * @return UserBalance
+	 */
+	@GetMapping("/getUserBalance")
+	public UserBalance userBalance(UserBalance userBalance) {
+		return userBalanceService.userBalanceByPlatFrom(userBalance);
 	}
 
 

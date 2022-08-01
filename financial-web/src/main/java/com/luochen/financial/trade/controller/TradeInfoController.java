@@ -7,7 +7,6 @@ import com.luochen.financial.trade.service.ITradeInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,9 +42,7 @@ public class TradeInfoController {
 	 */
 	@PostMapping("/save")
 	public void addTradeInfo(@RequestBody TradeInfo tradeInfo) {
-		tradeInfo.setRecordSource(TradeInfo.RecordSource.MANUAL.getValue());
-		tradeInfo.setCreateTime(new Date());
-		tradeInfoService.save(tradeInfo);
+		tradeInfoService.addTradeInfo(tradeInfo);
 	}
 
 	@PostMapping("/update")

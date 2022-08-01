@@ -67,5 +67,68 @@ public class UserBalance implements Serializable {
     @TableField("settle_amount")
     private BigDecimal settleAmount;
 
+    @TableField("arrears")
+    private BigDecimal arrears;
 
+    public void init(){
+        if(this.totalAmount == null){
+            this.totalAmount = BigDecimal.ZERO;
+        }
+        if(this.availableAmount == null){
+            this.availableAmount = BigDecimal.ZERO;
+        }
+        if(this.freezeAmount == null){
+            this.freezeAmount = BigDecimal.ZERO;
+        }
+        if(this.settleAmount == null){
+            this.settleAmount = BigDecimal.ZERO;
+        }
+    }
+
+    /**
+     * 中文显示
+     */
+    public void parseView(){
+        try {
+            DefaultPlatFrom platFrom = DefaultPlatFrom.valueOf(this.platfrom);
+            this.platfrom = platFrom.getName();
+        }catch (IllegalArgumentException ignored){}
+    }
+
+
+    /**
+     * 预设平台
+     */
+    public enum DefaultPlatFrom{
+        /**
+         * 微信
+         */
+        WECHAT("wechat","微信"),
+        /**
+         * 支付宝
+         */
+        ALIPAY("alipay","支付宝"),
+        /**
+         * 银行卡
+         */
+        BANK("bank","银行卡"),
+        /**
+         * 现金
+         */
+        CASH("cash", "现金")
+        ;
+        private final String value;
+        private final String name;
+        DefaultPlatFrom(String value, String name){
+            this.value = value;
+            this.name = name;
+        }
+        public String getValue() {
+            return value;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
 }
