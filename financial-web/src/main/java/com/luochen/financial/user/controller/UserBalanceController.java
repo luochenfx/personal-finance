@@ -5,9 +5,7 @@ import com.luochen.financial.user.entity.UserAssets;
 import com.luochen.financial.user.entity.UserBalance;
 import com.luochen.financial.user.service.IUserBalanceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,4 +44,12 @@ public class UserBalanceController {
 		return userBalanceService.getAllUserBalance(userId);
 	}
 
+
+	/**
+	 * 修改用户平台资产
+	 */
+	@PostMapping("/saveOrUpdateUserBalance")
+	public boolean saveOrUpdateUserBalance(@RequestBody UserBalance userBalance) {
+		return userBalanceService.saveOrUpdate(userBalance);
+	}
 }
