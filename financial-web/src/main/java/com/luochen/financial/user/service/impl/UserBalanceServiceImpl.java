@@ -69,6 +69,16 @@ public class UserBalanceServiceImpl extends ServiceImpl<UserBalanceMapper, UserB
 		return platFromBalance;
 	}
 
+	public List<UserBalance> getAllUserBalance(Long userId) {
+		LambdaQueryWrapper<UserBalance> query = Wrappers.lambdaQuery();
+		query.eq(UserBalance::getUserId, userId);
+		List<UserBalance> list = list(query);
+		for(UserBalance userBalance : list) {
+			userBalance.parseView();
+		}
+		return list;
+	}
+
 	@Transactional
 	private void userBalanceInit(Long userId) {
 		if (userId != null) {

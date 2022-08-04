@@ -9,6 +9,8 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -89,10 +91,10 @@ public class UserBalance implements Serializable {
      * 中文显示
      */
     public void parseView(){
-        try {
-            DefaultPlatFrom platFrom = DefaultPlatFrom.valueOf(this.platfrom);
-            this.platfrom = platFrom.getName();
-        }catch (IllegalArgumentException ignored){}
+        DefaultPlatFrom defaultPlatFrom = DefaultPlatFrom.PLAT_FROM_MAP.get(this.platfrom);
+        if (defaultPlatFrom != null) {
+            this.platfrom = defaultPlatFrom.getName();
+        }
     }
 
 
@@ -119,6 +121,12 @@ public class UserBalance implements Serializable {
         ;
         private final String value;
         private final String name;
+        private static final Map<String, DefaultPlatFrom> PLAT_FROM_MAP = new HashMap<>(8);
+        static {
+            for (DefaultPlatFrom myEnum : values()) {
+                PLAT_FROM_MAP.put(myEnum.getValue(), myEnum);
+            }
+        }
         DefaultPlatFrom(String value, String name){
             this.value = value;
             this.name = name;
@@ -129,6 +137,10 @@ public class UserBalance implements Serializable {
 
         public String getName() {
             return name;
+        }
+
+        public static DefaultPlatFrom getByValue(String value) {
+            return PLAT_FROM_MAP.get(value);
         }
     }
 }

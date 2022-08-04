@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * <p>
  *  前端控制器
@@ -39,5 +41,9 @@ public class UserBalanceController {
 		return userBalanceService.userBalanceByPlatFrom(userBalance);
 	}
 
+	@GetMapping("/getAllUserBalance")
+	public List<UserBalance> getAllUserBalance(Long userId) {
+		return userBalanceService.getAllUserBalance(userId);
+	}
 
 }

@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.luochen.financial.user.entity.UserAssets;
 import com.luochen.financial.user.entity.UserBalance;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -43,4 +45,11 @@ public interface IUserBalanceService extends IService<UserBalance> {
 	 * @return 平台余额
 	 */
 	UserBalance userBalanceByPlatFrom(UserBalance userBalance);
+
+	/**
+	 * 用户在所有平台的余额
+	 * @param userId 用户id
+	 * @return List<UserBalance>
+	 */
+	List<UserBalance> getAllUserBalance(Long userId);
 }
