@@ -33,7 +33,7 @@ public class Knife4jConfiguration {
 				.description("knife4j在线API接口文档")
 				.contact(new Contact("luochen", "https://doc.xiaominfo.com/", "luochenex@gmail.com"))
 				.version("v3.0.0")
-				.title("knife4j在线API接口文档")
+				.title("在线API接口文档")
 				.build();
 	}
 
