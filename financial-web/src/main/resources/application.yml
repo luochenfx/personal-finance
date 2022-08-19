@@ -4,7 +4,7 @@ spring:
 
   devtools:
     restart:
-      enabled=true:
+      enabled: true
 
   autoconfigure:
     exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
