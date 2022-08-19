@@ -23,7 +23,7 @@ public class Knife4jConfiguration {
 				.useDefaultResponseMessages(false)
 				.apiInfo(apiInfo())
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.luochen.financial.*.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.luochen.financial"))
 				.paths(PathSelectors.any())
 				.build();
 	}
