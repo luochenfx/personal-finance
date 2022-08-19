@@ -36,6 +36,7 @@
 		<jackson>2.13.3</jackson>
 		<mybatis-plus>3.5.2</mybatis-plus>
 		<json-web-token>0.11.5</json-web-token>
+		<knife4j>3.0.3</knife4j>
 
 	</properties>
 	<dependencies>
@@ -114,6 +115,12 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava}</version>
+		</dependency>
+		<!--引入Knife4j的官方start包-->
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-spring-boot-starter</artifactId>
+			<version>${knife4j}</version>
 		</dependency>
 
 
