@@ -17,27 +17,27 @@ import java.util.Map;
  */
 public interface IAlipayTransactionRecordService extends IService<AlipayTransactionRecord> {
 
-	/**
-	 * 按月份查询收支情况
-	 * @return TradeIncomeExpenditure
-	 */
-	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
+    /**
+     * 按月份查询收支情况
+     * @return TradeIncomeExpenditure
+     */
+    List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
 
-	/**
-	 * 查询所有转账记录
-	 * @return List<AlipayTransactionRecord>
-	 */
-	List<AlipayTransactionRecord> fundTransferOfAll();
+    /**
+     * 查询所有转账记录
+     * @return List<AlipayTransactionRecord>
+     */
+    List<AlipayTransactionRecord> fundTransferOfAll();
 
-	/**
-	 * 查询所有转账记录
-	 * @return List<AlipayTransactionRecord>
-	 */
-	List<Map<String,Object>> statisticsByFundStatus();
+    /**
+     * 查询所有转账记录
+     * @return List<AlipayTransactionRecord>
+     */
+    List<Map<String,Object>> statisticsByFundStatus();
 
-	/**
-	 * 获取本月消费金额
-	 * @return 本月消费金额
-	 */
-	double spendingThisMonth();
+    /**
+     * 获取本月消费金额
+     * @return 本月消费金额
+     */
+    double spendingThisMonth();
 }

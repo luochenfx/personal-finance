@@ -23,25 +23,25 @@ import java.util.List;
 @Service
 public class WxTransactionRecordServiceImpl extends ServiceImpl<WxTransactionRecordMapper, WxTransactionRecord> implements IWxTransactionRecordService {
 
-	@Override
-	public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth() {
-		return baseMapper.getIncomeExpenditureByAllMonth();
-	}
+    @Override
+    public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth() {
+        return baseMapper.getIncomeExpenditureByAllMonth();
+    }
 
-	@Override
-	public List<WxTransactionRecord> list(WxTransactionRecord wxTransactionRecord) {
-		LambdaQueryWrapper<WxTransactionRecord> query = Wrappers.lambdaQuery(wxTransactionRecord);
-		query.orderByDesc(WxTransactionRecord::getPayTime);
-		String dateTimeRange = wxTransactionRecord.getDateTimeRange();
-		if (StringUtils.hasText(dateTimeRange)) {
-			String[] split = dateTimeRange.split(" - ");
-			query.between(WxTransactionRecord::getPayTime, split[0], split[1]);
-		}
-		return list(query);
-	}
+    @Override
+    public List<WxTransactionRecord> list(WxTransactionRecord wxTransactionRecord) {
+        LambdaQueryWrapper<WxTransactionRecord> query = Wrappers.lambdaQuery(wxTransactionRecord);
+        query.orderByDesc(WxTransactionRecord::getPayTime);
+        String dateTimeRange = wxTransactionRecord.getDateTimeRange();
+        if (StringUtils.hasText(dateTimeRange)) {
+            String[] split = dateTimeRange.split(" - ");
+            query.between(WxTransactionRecord::getPayTime, split[0], split[1]);
+        }
+        return list(query);
+    }
 
-	@Override
-	public double spendingThisMonth() {
-		return baseMapper.spendingThisMonth();
-	}
+    @Override
+    public double spendingThisMonth() {
+        return baseMapper.spendingThisMonth();
+    }
 }

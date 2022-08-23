@@ -14,22 +14,22 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-	@Bean
-	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		return http
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
 //				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 //				.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-				// 预留路径不拦截
-				.authorizeRequests(authorize-> authorize.antMatchers("/**").permitAll())
-				.authorizeRequests(authorize -> authorize.anyRequest().authenticated())
-				.csrf().disable()
-				.build();
-	}
+                // 预留路径不拦截
+                .authorizeRequests(authorize-> authorize.antMatchers("/**").permitAll())
+                .authorizeRequests(authorize -> authorize.anyRequest().authenticated())
+                .csrf().disable()
+                .build();
+    }
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 
 }

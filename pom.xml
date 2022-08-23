@@ -37,6 +37,7 @@
 		<mybatis-plus>3.5.2</mybatis-plus>
 		<json-web-token>0.11.5</json-web-token>
 		<knife4j>3.0.3</knife4j>
+		<podam>7.2.9.RELEASE</podam>
 
 	</properties>
 	<dependencies>
@@ -122,6 +123,14 @@
 			<artifactId>knife4j-spring-boot-starter</artifactId>
 			<version>${knife4j}</version>
 		</dependency>
+		<!-- 对象填充工具 -->
+		<dependency>
+			<groupId>uk.co.jemos.podam</groupId>
+			<artifactId>podam</artifactId>
+			<version>${podam}</version>
+			<scope>test</scope>
+		</dependency>
+
 
 
 

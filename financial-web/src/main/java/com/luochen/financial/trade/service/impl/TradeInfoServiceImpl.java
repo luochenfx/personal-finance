@@ -26,34 +26,34 @@ import java.util.List;
 @Service
 public class TradeInfoServiceImpl extends ServiceImpl<TradeInfoMapper, TradeInfo> implements ITradeInfoService {
 
-	@Autowired
-	private IUserBalanceService userBalanceService;
+    @Autowired
+    private IUserBalanceService userBalanceService;
 
-	@Override
-	public List<TradeInfo> list(TradeInfo tradeInfo) {
-		LambdaQueryWrapper<TradeInfo> query = Wrappers.lambdaQuery(tradeInfo);
-		String dateTimeRange = tradeInfo.getDateTimeRange();
-		if (StringUtils.hasText(dateTimeRange)) {
-			String[] split = dateTimeRange.split(" - ");
-			query.between(TradeInfo::getPayTime, split[0], split[1]);
-		}
-		query.orderByAsc(TradeInfo::getPayTime);
-		return list(query);
-	}
+    @Override
+    public List<TradeInfo> list(TradeInfo tradeInfo) {
+        LambdaQueryWrapper<TradeInfo> query = Wrappers.lambdaQuery(tradeInfo);
+        String dateTimeRange = tradeInfo.getDateTimeRange();
+        if (StringUtils.hasText(dateTimeRange)) {
+            String[] split = dateTimeRange.split(" - ");
+            query.between(TradeInfo::getPayTime, split[0], split[1]);
+        }
+        query.orderByAsc(TradeInfo::getPayTime);
+        return list(query);
+    }
 
-	@Override
-	public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth() {
-		return baseMapper.getIncomeExpenditureByAllMonth();
-	}
+    @Override
+    public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth() {
+        return baseMapper.getIncomeExpenditureByAllMonth();
+    }
 
-	@Override
-	public double spendingThisMonth() {
-		return baseMapper.spendingThisMonth();
-	}
+    @Override
+    public double spendingThisMonth() {
+        return baseMapper.spendingThisMonth();
+    }
 
-	public boolean addTradeInfo(TradeInfo tradeInfo) {
-		tradeInfo.setRecordSource(TradeInfo.RecordSource.MANUAL.getValue());
-		tradeInfo.setCreateTime(new Date());
-		return save(tradeInfo);
-	}
+    public boolean addTradeInfo(TradeInfo tradeInfo) {
+        tradeInfo.setRecordSource(TradeInfo.RecordSource.MANUAL.getValue());
+        tradeInfo.setCreateTime(new Date());
+        return save(tradeInfo);
+    }
 }

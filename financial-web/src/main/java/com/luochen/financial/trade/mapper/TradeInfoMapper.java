@@ -18,11 +18,11 @@ import java.util.List;
 @Mapper
 public interface TradeInfoMapper extends BaseMapper<TradeInfo> {
 
-	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
+    List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
 
-	/**
-	 * 获取本月消费金额
-	 * @return 本月消费金额
-	 */
-	double spendingThisMonth();
+    /**
+     * 获取本月消费金额
+     * @return 本月消费金额
+     */
+    double spendingThisMonth();
 }

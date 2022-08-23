@@ -16,25 +16,25 @@ import java.util.List;
  */
 public interface ITradeInfoService extends IService<TradeInfo> {
 
-	/**
-	 *  列表查询
-	 * @param tradeInfo 交易信息
-	 * @return 交易信息列表
-	 */
-	List<TradeInfo> list(TradeInfo tradeInfo);
+    /**
+     *  列表查询
+     * @param tradeInfo 交易信息
+     * @return 交易信息列表
+     */
+    List<TradeInfo> list(TradeInfo tradeInfo);
 
-	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
+    List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
 
-	/**
-	 * 获取本月消费金额
-	 * @return 本月消费金额
-	 */
-	double spendingThisMonth();
+    /**
+     * 获取本月消费金额
+     * @return 本月消费金额
+     */
+    double spendingThisMonth();
 
-	/**
-	 * 添加交易信息
-	 * @param tradeInfo 交易信息
-	 * @return 是否添加成功
-	 */
-	boolean addTradeInfo(TradeInfo tradeInfo);
+    /**
+     * 添加交易信息
+     * @param tradeInfo 交易信息
+     * @return 是否添加成功
+     */
+    boolean addTradeInfo(TradeInfo tradeInfo);
 }

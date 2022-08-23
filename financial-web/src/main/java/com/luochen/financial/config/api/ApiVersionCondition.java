@@ -9,41 +9,42 @@ import java.util.regex.Pattern;
 
 /**
  * API 版本控制
+ * @author luochenfx
  */
 public class ApiVersionCondition implements RequestCondition<ApiVersionCondition> {
-	private final static Pattern VERSION_PREFIX_PATTERN = Pattern.compile(".*v(\\d+).*");
+    private final static Pattern VERSION_PREFIX_PATTERN = Pattern.compile(".*v(\\d+).*");
 
-	private final int apiVersion;
+    private final int apiVersion;
 
-	ApiVersionCondition(int apiVersion) {
-		this.apiVersion = apiVersion;
-	}
+    ApiVersionCondition(int apiVersion) {
+        this.apiVersion = apiVersion;
+    }
 
-	private int getApiVersion() {
-		return apiVersion;
-	}
+    private int getApiVersion() {
+        return apiVersion;
+    }
 
 
-	@NotNull
-	@Override
-	public ApiVersionCondition combine(ApiVersionCondition apiVersionCondition) {
-		return new ApiVersionCondition(apiVersionCondition.getApiVersion());
-	}
+    @NotNull
+    @Override
+    public ApiVersionCondition combine(ApiVersionCondition apiVersionCondition) {
+        return new ApiVersionCondition(apiVersionCondition.getApiVersion());
+    }
 
-	@Override
-	public ApiVersionCondition getMatchingCondition(HttpServletRequest httpServletRequest) {
-		Matcher m = VERSION_PREFIX_PATTERN.matcher(httpServletRequest.getRequestURI());
-		if (m.find()) {
-			int version = Integer.parseInt(m.group(1));
-			if (version >= this.apiVersion) {
-				return this;
-			}
-		}
-		return null;
-	}
+    @Override
+    public ApiVersionCondition getMatchingCondition(HttpServletRequest httpServletRequest) {
+        Matcher m = VERSION_PREFIX_PATTERN.matcher(httpServletRequest.getRequestURI());
+        if (m.find()) {
+            int version = Integer.parseInt(m.group(1));
+            if (version >= this.apiVersion) {
+                return this;
+            }
+        }
+        return null;
+    }
 
-	@Override
-	public int compareTo(ApiVersionCondition apiVersionCondition, @NotNull HttpServletRequest httpServletRequest) {
-		return apiVersionCondition.getApiVersion() - this.apiVersion;
-	}
+    @Override
+    public int compareTo(ApiVersionCondition apiVersionCondition, @NotNull HttpServletRequest httpServletRequest) {
+        return apiVersionCondition.getApiVersion() - this.apiVersion;
+    }
 }

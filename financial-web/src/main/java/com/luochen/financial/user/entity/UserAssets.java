@@ -12,6 +12,6 @@ import java.util.List;
 @Getter
 @Setter
 public class UserAssets {
-	List<UserBalance> userBalanceList;
-	private BigDecimal totalAmount;
+    List<UserBalance> userBalanceList;
+    private BigDecimal totalAmount;
 }

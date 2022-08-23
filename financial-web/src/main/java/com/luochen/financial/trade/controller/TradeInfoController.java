@@ -24,67 +24,67 @@ import java.util.List;
 @RequestMapping("/trade/trade-info")
 public class TradeInfoController {
 
-	@Autowired
-	private ITradeInfoService tradeInfoService;
+    @Autowired
+    private ITradeInfoService tradeInfoService;
 
-	@ApiOperation(value = "所有交易信息")
-	@GetMapping("/all")
-	public List<TradeInfo> all() {
-		return tradeInfoService.list();
-	}
-
-
-	@ApiOperation(value = "获取交易信息列表")
-	@GetMapping("/list")
-	public List<TradeInfo> list(TradeInfo tradeInfo) {
-		return tradeInfoService.list(tradeInfo);
-	}
+    @ApiOperation(value = "所有交易信息")
+    @GetMapping("/all")
+    public List<TradeInfo> all() {
+        return tradeInfoService.list();
+    }
 
 
-	/**
-	 * 保存交易信息
-	 * @param tradeInfo 交易信息
-	 */
-	@ApiOperation(value = "保存交易信息")
-	@PostMapping("/save")
-	public void addTradeInfo(@RequestBody TradeInfo tradeInfo) {
-		tradeInfoService.addTradeInfo(tradeInfo);
-	}
+    @ApiOperation(value = "获取交易信息列表")
+    @GetMapping("/list")
+    public List<TradeInfo> list(TradeInfo tradeInfo) {
+        return tradeInfoService.list(tradeInfo);
+    }
 
-	/**
-	 * 修改交易信息
-	 * @param tradeInfo 交易信息
-	 */
-	@ApiOperation(value = "修改交易信息")
-	@PostMapping("/update")
-	public void updateTradeInfo(@RequestBody TradeInfo tradeInfo) {
-		tradeInfoService.updateById(tradeInfo);
-	}
 
-	/**
-	 * 删除交易信息
-	 * @param tradeInfo 交易信息
-	 */
-	@ApiOperation(value = "删除交易信息")
-	@PostMapping("/delete")
-	public void deleteTradeInfo(@RequestBody TradeInfo tradeInfo) {
-		tradeInfoService.removeById(tradeInfo.getId());
-	}
+    /**
+     * 保存交易信息
+     * @param tradeInfo 交易信息
+     */
+    @ApiOperation(value = "保存交易信息")
+    @PostMapping("/save")
+    public void addTradeInfo(@RequestBody TradeInfo tradeInfo) {
+        tradeInfoService.addTradeInfo(tradeInfo);
+    }
 
-	@ApiOperation(value = "月收支统计")
-	@GetMapping("/incomeExpenditureByAllMonth")
-	public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
-		return tradeInfoService.getIncomeExpenditureByAllMonth();
-	}
+    /**
+     * 修改交易信息
+     * @param tradeInfo 交易信息
+     */
+    @ApiOperation(value = "修改交易信息")
+    @PostMapping("/update")
+    public void updateTradeInfo(@RequestBody TradeInfo tradeInfo) {
+        tradeInfoService.updateById(tradeInfo);
+    }
 
-	/**
-	 * 获取本月消费金额
-	 * @return 本月消费金额
-	 */
-	@ApiOperation(value = "获取本月消费金额")
-	@GetMapping("/spendingThisMonth")
-	public double spendingThisMonth(){
-		return tradeInfoService.spendingThisMonth();
-	}
+    /**
+     * 删除交易信息
+     * @param tradeInfo 交易信息
+     */
+    @ApiOperation(value = "删除交易信息")
+    @PostMapping("/delete")
+    public void deleteTradeInfo(@RequestBody TradeInfo tradeInfo) {
+        tradeInfoService.removeById(tradeInfo.getId());
+    }
+
+    @ApiOperation(value = "月收支统计")
+    @GetMapping("/incomeExpenditureByAllMonth")
+    public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
+        return tradeInfoService.getIncomeExpenditureByAllMonth();
+    }
+
+    /**
+     * 获取本月消费金额
+     * @return 本月消费金额
+     */
+    @ApiOperation(value = "获取本月消费金额")
+    @GetMapping("/spendingThisMonth")
+    public double spendingThisMonth(){
+        return tradeInfoService.spendingThisMonth();
+    }
 
 }

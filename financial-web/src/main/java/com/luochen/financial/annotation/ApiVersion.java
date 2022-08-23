@@ -7,12 +7,13 @@ import java.lang.annotation.Target;
 
 /**
  * API版本控制
+ * @author luochenfx
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ApiVersion {
-	/**
-	 * @return 版本号
-	 */
-	int value() default 1;
+    /**
+     * @return 版本号
+     */
+    int value() default 1;
 }

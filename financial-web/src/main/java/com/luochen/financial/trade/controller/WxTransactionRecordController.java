@@ -23,34 +23,35 @@ import java.util.List;
 @RequestMapping("/trade/wx")
 public class WxTransactionRecordController {
 
-	@Autowired
-	private IWxTransactionRecordService wxTransactionRecordService;
+    @Autowired
+    private IWxTransactionRecordService wxTransactionRecordService;
 
-	@GetMapping("/all")
-	public List<WxTransactionRecord> all() {
-		return wxTransactionRecordService.list();
-	}
-
-
-	@GetMapping("/list")
-	public List<WxTransactionRecord> list(WxTransactionRecord wxTransactionRecord) {
-		return wxTransactionRecordService.list(wxTransactionRecord);
-	}
-
-	@GetMapping("/incomeExpenditureByAllMonth")
-	public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
-		return wxTransactionRecordService.getIncomeExpenditureByAllMonth();
-	}
-
-	public List<WxTransactionRecord> statistics(WxTransactionRecord wxTransactionRecord) {
-		return wxTransactionRecordService.list();
-	}
+    @GetMapping("/all")
+    public List<WxTransactionRecord> all() {
+        return wxTransactionRecordService.list();
+    }
 
 
-	@GetMapping("/spendingThisMonth")
-	public double spendingThisMonth(){
-		return wxTransactionRecordService.spendingThisMonth();
-	}
+    @GetMapping("/list")
+    public List<WxTransactionRecord> list(WxTransactionRecord wxTransactionRecord) {
+        return wxTransactionRecordService.list(wxTransactionRecord);
+    }
+
+    @GetMapping("/incomeExpenditureByAllMonth")
+    public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
+        return wxTransactionRecordService.getIncomeExpenditureByAllMonth();
+    }
+
+    @GetMapping("/statistics")
+    public List<WxTransactionRecord> statistics(WxTransactionRecord wxTransactionRecord) {
+        return wxTransactionRecordService.list();
+    }
+
+
+    @GetMapping("/spendingThisMonth")
+    public double spendingThisMonth(){
+        return wxTransactionRecordService.spendingThisMonth();
+    }
 
 
 }

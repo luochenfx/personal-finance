@@ -19,21 +19,21 @@ import java.util.Map;
 @Mapper
 public interface AlipayTransactionRecordMapper extends BaseMapper<AlipayTransactionRecord> {
 
-	/**
-	 * 按月份查询收支情况
-	 * @return 月份和收支
-	 */
-	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
+    /**
+     * 按月份查询收支情况
+     * @return 月份和收支
+     */
+    List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
 
-	/**
-	 * 查询所有转账记录
-	 * @return 转账记录
-	 */
-	List<Map<String,Object>> statisticsByFundStatus();
+    /**
+     * 查询所有转账记录
+     * @return 转账记录
+     */
+    List<Map<String,Object>> statisticsByFundStatus();
 
-	/**
-	 * 获取本月消费金额
-	 * @return 本月消费金额
-	 */
-	double spendingThisMonth();
+    /**
+     * 获取本月消费金额
+     * @return 本月消费金额
+     */
+    double spendingThisMonth();
 }

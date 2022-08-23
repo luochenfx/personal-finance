@@ -15,30 +15,30 @@ import org.springframework.util.StopWatch;
 @Aspect
 @Slf4j
 public class LogAspect {
-	@Pointcut("execution(* com.luochen..*.*(..))")
-	public void logPointcut() {
-	}
+    @Pointcut("execution(* com.luochen..*.*(..))")
+    public void logPointcut() {
+    }
 
-	@Pointcut("within(@org.springframework.stereotype.Repository *)" +
-			" || within(@org.springframework.stereotype.Service *)" +
-			" || within(@org.springframework.web.bind.annotation.RestController *)")
-	public void springBeanPointcut() {
-		// Method is empty as this is just a Pointcut, the implementations are in the advices.
-	}
+    @Pointcut("within(@org.springframework.stereotype.Repository *)" +
+            " || within(@org.springframework.stereotype.Service *)" +
+            " || within(@org.springframework.web.bind.annotation.RestController *)")
+    public void springBeanPointcut() {
+        // Method is empty as this is just a Pointcut, the implementations are in the advices.
+    }
 
-	@Around("logPointcut()")
-	public Object timeConsumingRecord(ProceedingJoinPoint joinPoint) throws Throwable {
-		StopWatch stopWatch = new StopWatch(joinPoint.getSignature().getDeclaringTypeName());
-		stopWatch.start(joinPoint.getSignature().getName());
-		try {
-			Object result = joinPoint.proceed();
-			stopWatch.stop();
-			log.info(stopWatch.prettyPrint());
-			return result;
-		} catch (Throwable e) {
-			stopWatch.stop();
-			log.info(stopWatch.prettyPrint());
-			throw e;
-		}
-	}
+    @Around("logPointcut()")
+    public Object timeConsumingRecord(ProceedingJoinPoint joinPoint) throws Throwable {
+        StopWatch stopWatch = new StopWatch(joinPoint.getSignature().getDeclaringTypeName());
+        stopWatch.start(joinPoint.getSignature().getName());
+        try {
+            Object result = joinPoint.proceed();
+            stopWatch.stop();
+            log.info(stopWatch.prettyPrint());
+            return result;
+        } catch (Throwable e) {
+            stopWatch.stop();
+            log.info(stopWatch.prettyPrint());
+            throw e;
+        }
+    }
 }

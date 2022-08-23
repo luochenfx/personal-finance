@@ -25,39 +25,39 @@ import java.util.List;
 @RequestMapping("/user/user-balance")
 public class UserBalanceController {
 
-	@Autowired
-	private IUserBalanceService userBalanceService;
+    @Autowired
+    private IUserBalanceService userBalanceService;
 
-	@ApiOperation(value = "全平台余额")
-	@GetMapping("/inquireBalance")
-	public UserAssets inquireBalance(Long userId) {
-		return userBalanceService.getUserAssets(userId);
-	}
+    @ApiOperation(value = "全平台余额")
+    @GetMapping("/inquireBalance")
+    public UserAssets inquireBalance(Long userId) {
+        return userBalanceService.getUserAssets(userId);
+    }
 
-	/**
-	 * 获取用户平台资产
-	 * @param userBalance userBalance
-	 * @return UserBalance
-	 */
-	@ApiOperation(value = "余额查询")
-	@GetMapping("/getUserBalance")
-	public UserBalance userBalance(UserBalance userBalance) {
-		return userBalanceService.userBalanceByPlatFrom(userBalance);
-	}
+    /**
+     * 获取用户平台资产
+     * @param userBalance userBalance
+     * @return UserBalance
+     */
+    @ApiOperation(value = "余额查询")
+    @GetMapping("/getUserBalance")
+    public UserBalance userBalance(UserBalance userBalance) {
+        return userBalanceService.userBalanceByPlatFrom(userBalance);
+    }
 
-	@ApiOperation(value = "用户在所有平台的余额")
-	@GetMapping("/getAllUserBalance")
-	public List<UserBalance> getAllUserBalance(Long userId) {
-		return userBalanceService.getAllUserBalance(userId);
-	}
+    @ApiOperation(value = "用户在所有平台的余额")
+    @GetMapping("/getAllUserBalance")
+    public List<UserBalance> getAllUserBalance(Long userId) {
+        return userBalanceService.getAllUserBalance(userId);
+    }
 
 
-	/**
-	 * 修改用户平台资产
-	 */
-	@ApiOperation(value = "修改用户平台资产")
-	@PostMapping("/saveOrUpdateUserBalance")
-	public boolean saveOrUpdateUserBalance(@RequestBody UserBalance userBalance) {
-		return userBalanceService.saveOrUpdate(userBalance);
-	}
+    /**
+     * 修改用户平台资产
+     */
+    @ApiOperation(value = "修改用户平台资产")
+    @PostMapping("/saveOrUpdateUserBalance")
+    public boolean saveOrUpdateUserBalance(@RequestBody UserBalance userBalance) {
+        return userBalanceService.saveOrUpdate(userBalance);
+    }
 }

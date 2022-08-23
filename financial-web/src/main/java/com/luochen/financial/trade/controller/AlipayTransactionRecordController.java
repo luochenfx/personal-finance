@@ -31,75 +31,69 @@ import java.util.Map;
 @RequestMapping("/trade/alipay-transaction-record")
 public class AlipayTransactionRecordController {
 
-	@Autowired
-	private IAlipayTransactionRecordService alipayTransactionRecordService;
+    @Autowired
+    private IAlipayTransactionRecordService alipayTransactionRecordService;
 
-	@ApiOperation(value = "所有支付宝交易记录")
-	@GetMapping("/all")
-	public List<AlipayTransactionRecord> all() {
-		return alipayTransactionRecordService.list();
-	}
+    @ApiOperation(value = "所有支付宝交易记录")
+    @GetMapping("/all")
+    public List<AlipayTransactionRecord> all() {
+        return alipayTransactionRecordService.list();
+    }
 
-	@ApiOperation(value = "支付宝收入记录")
-	@GetMapping("/income")
-	public List<AlipayTransactionRecord> getIncome(){
-		LambdaQueryWrapper<AlipayTransactionRecord> query = Wrappers.lambdaQuery();
-		query.eq(AlipayTransactionRecord::getIncomeExpenditure, AlipayTransactionRecord.IncomeExpenditure.INCOME.getValue());
-		query.orderByDesc(AlipayTransactionRecord::getPayTime);
-		return alipayTransactionRecordService.list(query);
-	}
+    @ApiOperation(value = "支付宝收入记录")
+    @GetMapping("/income")
+    public List<AlipayTransactionRecord> getIncome(){
+        LambdaQueryWrapper<AlipayTransactionRecord> query = Wrappers.lambdaQuery();
+        query.eq(AlipayTransactionRecord::getIncomeExpenditure, AlipayTransactionRecord.IncomeExpenditure.INCOME.getValue());
+        query.orderByDesc(AlipayTransactionRecord::getPayTime);
+        return alipayTransactionRecordService.list(query);
+    }
 
-	@ApiOperation(value = "支付宝支出记录")
-	@GetMapping("/expenditure")
-	public List<AlipayTransactionRecord> getExpenditure(){
-		LambdaQueryWrapper<AlipayTransactionRecord> query = Wrappers.lambdaQuery();
-		query.eq(AlipayTransactionRecord::getIncomeExpenditure, AlipayTransactionRecord.IncomeExpenditure.EXPENDITURE.getValue());
-		query.orderByDesc(AlipayTransactionRecord::getPayTime);
-		return alipayTransactionRecordService.list(query);
-	}
+    @ApiOperation(value = "支付宝支出记录")
+    @GetMapping("/expenditure")
+    public List<AlipayTransactionRecord> getExpenditure(){
+        LambdaQueryWrapper<AlipayTransactionRecord> query = Wrappers.lambdaQuery();
+        query.eq(AlipayTransactionRecord::getIncomeExpenditure, AlipayTransactionRecord.IncomeExpenditure.EXPENDITURE.getValue());
+        query.orderByDesc(AlipayTransactionRecord::getPayTime);
+        return alipayTransactionRecordService.list(query);
+    }
 
-	@ApiOperation(value = "支付宝本月收支统计")
-	@GetMapping("/incomeExpenditureByAllMonth")
-	public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
-		return alipayTransactionRecordService.getIncomeExpenditureByAllMonth();
-	}
+    @ApiOperation(value = "支付宝本月收支统计")
+    @GetMapping("/incomeExpenditureByAllMonth")
+    public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
+        return alipayTransactionRecordService.getIncomeExpenditureByAllMonth();
+    }
 
-	/**
-	 * 查询所有的转账记录
-	 * @return 转账记录列表
-	 */
-	@ApiOperation(value = "查询所有的转账记录")
-	@GetMapping("/fundTransferOfAll")
-	public List<AlipayTransactionRecord> fundTransferOfAll(){
-		return alipayTransactionRecordService.fundTransferOfAll();
-	}
+    /**
+     * 查询所有的转账记录
+     * @return 转账记录列表
+     */
+    @ApiOperation(value = "查询所有的转账记录")
+    @GetMapping("/fundTransferOfAll")
+    public List<AlipayTransactionRecord> fundTransferOfAll(){
+        return alipayTransactionRecordService.fundTransferOfAll();
+    }
 
 
 
-	@ApiOperation(value = "资金转移状态统计")
-	@GetMapping("/statisticsByFundStatus")
-	public List<Map<String, Object>> statisticsByFundStatus(){
-		return alipayTransactionRecordService.statisticsByFundStatus();
-	}
+    @ApiOperation(value = "资金转移状态统计")
+    @GetMapping("/statisticsByFundStatus")
+    public List<Map<String, Object>> statisticsByFundStatus(){
+        return alipayTransactionRecordService.statisticsByFundStatus();
+    }
 
-	@ApiOperation(value = "获取本月消费金额")
-	@GetMapping("/spendingThisMonth")
-	public double spendingThisMonth(){
-		return alipayTransactionRecordService.spendingThisMonth();
-	}
+    @ApiOperation(value = "获取本月消费金额")
+    @GetMapping("/spendingThisMonth")
+    public double spendingThisMonth(){
+        return alipayTransactionRecordService.spendingThisMonth();
+    }
 
-	@ApiOperation(value = "账单上传")
-	@PostMapping("/upload")
-	public void uploadFile(String fileName, MultipartFile file){
+    @ApiOperation(value = "账单上传")
+    @PostMapping("/upload")
+    public void uploadFile(String fileName, MultipartFile file){
 
-	}
+    }
 
-//	private List<TemplateEntity> getTemplateEntities(MultipartFile file) throws IOException {
-//		TemplateListener listener = new TemplateListener();	// 定义的 listener
-//		EasyExcel.read(file.getInputStream(), TemplateEntity.class, listener).sheet().doRead();
-//
-//		// 返回 所有数据
-//		return listener.getData();
-//	}
+
 
 }

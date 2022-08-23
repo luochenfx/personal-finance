@@ -26,66 +26,66 @@ import java.util.List;
 @Service
 public class UserBalanceServiceImpl extends ServiceImpl<UserBalanceMapper, UserBalance> implements IUserBalanceService {
 
-	@Override
-	public UserAssets getUserAssets(Long userId) {
-		UserAssets userAssets = new UserAssets();
-		LambdaQueryChainWrapper<UserBalance> wrapper = lambdaQuery().eq(UserBalance::getUserId, userId);
-		List<UserBalance> list = wrapper.list();
-		if (!CollectionUtils.isEmpty(list)) {
-			userAssets.setUserBalanceList(list);
-			BigDecimal reduce = list.stream().map(UserBalance::getTotalAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
-			userAssets.setTotalAmount(reduce);
-		}else {
-			userBalanceInit(userId);
-			userAssets.setTotalAmount(BigDecimal.ZERO);
-		}
-		return userAssets;
-	}
-	@Override
-	public UserBalance addNewPlatFrom(String platFrom, Long userId) {
-		UserBalance userBalance = new UserBalance();
-		userBalance.setUserId(userId);
-		userBalance.setPlatfrom(platFrom);
-		userBalance.init();
-		save(userBalance);
-		return userBalance;
-	}
+    @Override
+    public UserAssets getUserAssets(Long userId) {
+        UserAssets userAssets = new UserAssets();
+        LambdaQueryChainWrapper<UserBalance> wrapper = lambdaQuery().eq(UserBalance::getUserId, userId);
+        List<UserBalance> list = wrapper.list();
+        if (!CollectionUtils.isEmpty(list)) {
+            userAssets.setUserBalanceList(list);
+            BigDecimal reduce = list.stream().map(UserBalance::getTotalAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
+            userAssets.setTotalAmount(reduce);
+        }else {
+            userBalanceInit(userId);
+            userAssets.setTotalAmount(BigDecimal.ZERO);
+        }
+        return userAssets;
+    }
+    @Override
+    public UserBalance addNewPlatFrom(String platFrom, Long userId) {
+        UserBalance userBalance = new UserBalance();
+        userBalance.setUserId(userId);
+        userBalance.setPlatfrom(platFrom);
+        userBalance.init();
+        save(userBalance);
+        return userBalance;
+    }
 
-	@Override
-	public UserBalance addNewPlatFrom(UserBalance.DefaultPlatFrom platFrom, Long userId) {
-		return addNewPlatFrom(platFrom.getValue(), userId);
-	}
+    @Override
+    public UserBalance addNewPlatFrom(UserBalance.DefaultPlatFrom platFrom, Long userId) {
+        return addNewPlatFrom(platFrom.getValue(), userId);
+    }
 
-	@Override
-	public UserBalance userBalanceByPlatFrom(UserBalance userBalance) {
-		LambdaQueryWrapper<UserBalance> query = Wrappers.lambdaQuery();
-		query.eq(UserBalance::getUserId, userBalance.getUserId());
-		query.eq(UserBalance::getPlatfrom, userBalance.getPlatfrom());
-		UserBalance platFromBalance = getOne(query);
-		if (platFromBalance == null) {
-			platFromBalance = addNewPlatFrom(userBalance.getPlatfrom(), userBalance.getUserId());
-		}
-		platFromBalance.parseView();
-		return platFromBalance;
-	}
+    @Override
+    public UserBalance userBalanceByPlatFrom(UserBalance userBalance) {
+        LambdaQueryWrapper<UserBalance> query = Wrappers.lambdaQuery();
+        query.eq(UserBalance::getUserId, userBalance.getUserId());
+        query.eq(UserBalance::getPlatfrom, userBalance.getPlatfrom());
+        UserBalance platFromBalance = getOne(query);
+        if (platFromBalance == null) {
+            platFromBalance = addNewPlatFrom(userBalance.getPlatfrom(), userBalance.getUserId());
+        }
+        platFromBalance.parseView();
+        return platFromBalance;
+    }
 
-	public List<UserBalance> getAllUserBalance(Long userId) {
-		LambdaQueryWrapper<UserBalance> query = Wrappers.lambdaQuery();
-		query.eq(UserBalance::getUserId, userId);
-		List<UserBalance> list = list(query);
-		for(UserBalance userBalance : list) {
-			userBalance.parseView();
-		}
-		return list;
-	}
+    public List<UserBalance> getAllUserBalance(Long userId) {
+        LambdaQueryWrapper<UserBalance> query = Wrappers.lambdaQuery();
+        query.eq(UserBalance::getUserId, userId);
+        List<UserBalance> list = list(query);
+        for(UserBalance userBalance : list) {
+            userBalance.parseView();
+        }
+        return list;
+    }
 
-	@Transactional
-	private void userBalanceInit(Long userId) {
-		if (userId != null) {
-			addNewPlatFrom(UserBalance.DefaultPlatFrom.ALIPAY, userId);
-			addNewPlatFrom(UserBalance.DefaultPlatFrom.WECHAT, userId);
-			addNewPlatFrom(UserBalance.DefaultPlatFrom.CASH, userId);
-			addNewPlatFrom(UserBalance.DefaultPlatFrom.BANK, userId);
-		}
-	}
+    @Transactional
+    private void userBalanceInit(Long userId) {
+        if (userId != null) {
+            addNewPlatFrom(UserBalance.DefaultPlatFrom.ALIPAY, userId);
+            addNewPlatFrom(UserBalance.DefaultPlatFrom.WECHAT, userId);
+            addNewPlatFrom(UserBalance.DefaultPlatFrom.CASH, userId);
+            addNewPlatFrom(UserBalance.DefaultPlatFrom.BANK, userId);
+        }
+    }
 }

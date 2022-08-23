@@ -23,26 +23,26 @@ import java.util.Map;
 @Service
 public class AlipayTransactionRecordServiceImpl extends ServiceImpl<AlipayTransactionRecordMapper, AlipayTransactionRecord> implements IAlipayTransactionRecordService {
 
-	@Override
-	public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth() {
-		return baseMapper.getIncomeExpenditureByAllMonth();
-	}
+    @Override
+    public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth() {
+        return baseMapper.getIncomeExpenditureByAllMonth();
+    }
 
-	public List<AlipayTransactionRecord> fundTransferOfAll() {
-		LambdaQueryWrapper<AlipayTransactionRecord> query = Wrappers.lambdaQuery();
-		query.eq(AlipayTransactionRecord::getFundStatus, AlipayTransactionRecord.FundStatus.FUND_TRANS.getValue());
-		query.orderByDesc(AlipayTransactionRecord::getPayTime);
-		return baseMapper.selectList(query);
-	}
+    public List<AlipayTransactionRecord> fundTransferOfAll() {
+        LambdaQueryWrapper<AlipayTransactionRecord> query = Wrappers.lambdaQuery();
+        query.eq(AlipayTransactionRecord::getFundStatus, AlipayTransactionRecord.FundStatus.FUND_TRANS.getValue());
+        query.orderByDesc(AlipayTransactionRecord::getPayTime);
+        return baseMapper.selectList(query);
+    }
 
-	@Override
-	public List<Map<String, Object>> statisticsByFundStatus() {
-		return baseMapper.statisticsByFundStatus();
-	}
+    @Override
+    public List<Map<String, Object>> statisticsByFundStatus() {
+        return baseMapper.statisticsByFundStatus();
+    }
 
-	@Override
-	public double spendingThisMonth() {
-		return baseMapper.spendingThisMonth();
-	}
+    @Override
+    public double spendingThisMonth() {
+        return baseMapper.spendingThisMonth();
+    }
 
 }

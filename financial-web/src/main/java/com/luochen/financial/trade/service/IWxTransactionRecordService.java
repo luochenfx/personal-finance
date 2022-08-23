@@ -16,18 +16,18 @@ import java.util.List;
  */
 public interface IWxTransactionRecordService extends IService<WxTransactionRecord> {
 
-	List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
+    List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
 
-	/**
-	 * 查询所有转账记录
-	 * @param wxTransactionRecord 微信账单实体
-	 * @return boolean
-	 */
-	List<WxTransactionRecord> list(WxTransactionRecord wxTransactionRecord);
+    /**
+     * 查询所有转账记录
+     * @param wxTransactionRecord 微信账单实体
+     * @return boolean
+     */
+    List<WxTransactionRecord> list(WxTransactionRecord wxTransactionRecord);
 
-	/**
-	 * 获取本月消费金额
-	 * @return 本月消费金额
-	 */
-	double spendingThisMonth();
+    /**
+     * 获取本月消费金额
+     * @return 本月消费金额
+     */
+    double spendingThisMonth();
 }

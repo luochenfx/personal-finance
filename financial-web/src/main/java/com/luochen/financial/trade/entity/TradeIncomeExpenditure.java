@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  */
 @Data
 public class TradeIncomeExpenditure {
-	private String date;
-	private BigDecimal income;
-	private BigDecimal expenditure;
+    private String date;
+    private BigDecimal income;
+    private BigDecimal expenditure;
 }
