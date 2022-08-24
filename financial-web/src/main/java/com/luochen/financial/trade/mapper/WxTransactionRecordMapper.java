@@ -18,6 +18,10 @@ import java.util.List;
 @Mapper
 public interface WxTransactionRecordMapper extends BaseMapper<WxTransactionRecord> {
 
+    /**
+     * 获取月度收支信息
+     * @return 收支列表
+     */
     List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
 
     /**

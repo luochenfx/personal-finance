@@ -10,7 +10,10 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * <p>
@@ -149,6 +152,18 @@ public class AlipayTransactionRecord implements Serializable {
         public String getValue() {
             return value;
         }
+    }
+
+    /**
+     * 根据名称获取信息
+     * @param value 收支信息
+     * @return FundStatus
+     */
+    public FundStatus getFundStatusByValue(String value){
+        Optional<FundStatus> optional = Arrays.stream(FundStatus.values())
+                .filter(p -> Objects.equals(p.getValue(), value))
+                .findFirst();
+        return optional.orElse(null);
     }
 
     public enum FundStatus {

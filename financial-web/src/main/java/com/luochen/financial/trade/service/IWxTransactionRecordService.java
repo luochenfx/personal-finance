@@ -16,6 +16,10 @@ import java.util.List;
  */
 public interface IWxTransactionRecordService extends IService<WxTransactionRecord> {
 
+    /**
+     * 获取月度收支信息
+     * @return 收支列表
+     */
     List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
 
     /**
