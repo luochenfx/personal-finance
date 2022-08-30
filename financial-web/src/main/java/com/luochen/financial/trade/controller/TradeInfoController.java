@@ -19,7 +19,7 @@ import java.util.List;
  * @author luochen
  * @since 2022-07-12
  */
-@Api(tags = "交易信息")
+@Api(value = "其他交易信息")
 @RestController
 @RequestMapping("/trade/trade-info")
 public class TradeInfoController {

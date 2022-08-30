@@ -26,7 +26,7 @@ import java.util.Map;
  * @author luochen
  * @since 2022-07-19
  */
-@Api(tags = "支付宝交易记录")
+@Api(value = "支付宝交易记录", tags = "支付宝")
 @RestController
 @RequestMapping("/trade/alipay-transaction-record")
 public class AlipayTransactionRecordController {
@@ -58,7 +58,7 @@ public class AlipayTransactionRecordController {
         return alipayTransactionRecordService.list(query);
     }
 
-    @ApiOperation(value = "支付宝本月收支统计")
+    @ApiOperation(value = "支付宝本月收支统计", notes = "按月份查询收支情况")
     @GetMapping("/incomeExpenditureByAllMonth")
     public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
         return alipayTransactionRecordService.getIncomeExpenditureByAllMonth();
