@@ -11,8 +11,8 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * <p>
@@ -102,7 +102,7 @@ public class UserBalance implements Serializable {
      * 中文显示
      */
     public void parseView(){
-        DefaultPlatFrom defaultPlatFrom = DefaultPlatFrom.PLAT_FROM_MAP.get(this.platfrom);
+        DefaultPlatFrom defaultPlatFrom = DefaultPlatFrom.findAny(this.platfrom);
         if (defaultPlatFrom != null) {
             this.platfrom = defaultPlatFrom.getName();
         }
@@ -132,12 +132,6 @@ public class UserBalance implements Serializable {
         ;
         private final String value;
         private final String name;
-        private static final Map<String, DefaultPlatFrom> PLAT_FROM_MAP = new HashMap<>(8);
-        static {
-            for (DefaultPlatFrom myEnum : values()) {
-                PLAT_FROM_MAP.put(myEnum.getValue(), myEnum);
-            }
-        }
         DefaultPlatFrom(String value, String name){
             this.value = value;
             this.name = name;
@@ -150,8 +144,11 @@ public class UserBalance implements Serializable {
             return name;
         }
 
-        public static DefaultPlatFrom getByValue(String value) {
-            return PLAT_FROM_MAP.get(value);
+        public static DefaultPlatFrom findAny(String value) {
+            return Arrays.stream(DefaultPlatFrom.values())
+                    .filter(platFrom -> Objects.equals(platFrom.getValue(), value))
+                    .findAny()
+                    .orElse(null);
         }
     }
 }
