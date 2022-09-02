@@ -8,7 +8,8 @@ import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.service.IAlipayTransactionRecordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,10 +30,10 @@ import java.util.Map;
 @Api(value = "支付宝交易记录", tags = "支付宝")
 @RestController
 @RequestMapping("/trade/alipay-transaction-record")
+@RequiredArgsConstructor(onConstructor = @__(@Lazy))
 public class AlipayTransactionRecordController {
 
-    @Autowired
-    private IAlipayTransactionRecordService alipayTransactionRecordService;
+    private final IAlipayTransactionRecordService alipayTransactionRecordService;
 
     @ApiOperation(value = "所有支付宝交易记录")
     @GetMapping("/all")

@@ -6,7 +6,8 @@ import com.luochen.financial.trade.entity.WxTransactionRecord;
 import com.luochen.financial.trade.service.IWxTransactionRecordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,10 +25,11 @@ import java.util.List;
 @Api(value = "微信交易记录", tags = "微信")
 @RestController
 @RequestMapping("/trade/wx")
+@RequiredArgsConstructor(onConstructor = @__(@Lazy))
 public class WxTransactionRecordController {
 
-    @Autowired
-    private IWxTransactionRecordService wxTransactionRecordService;
+
+    private final IWxTransactionRecordService wxTransactionRecordService;
 
     @ApiOperation(value = "所有微信交易记录")
     @GetMapping("/all")

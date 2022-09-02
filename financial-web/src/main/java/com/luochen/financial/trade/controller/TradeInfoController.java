@@ -6,7 +6,8 @@ import com.luochen.financial.trade.entity.TradeInfo;
 import com.luochen.financial.trade.service.ITradeInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,10 +23,10 @@ import java.util.List;
 @Api(value = "其他交易信息")
 @RestController
 @RequestMapping("/trade/trade-info")
+@RequiredArgsConstructor(onConstructor = @__(@Lazy))
 public class TradeInfoController {
 
-    @Autowired
-    private ITradeInfoService tradeInfoService;
+    private final ITradeInfoService tradeInfoService;
 
     @ApiOperation(value = "所有交易信息")
     @GetMapping("/all")

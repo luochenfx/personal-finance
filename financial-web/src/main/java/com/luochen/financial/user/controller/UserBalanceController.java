@@ -6,7 +6,8 @@ import com.luochen.financial.user.entity.UserBalance;
 import com.luochen.financial.user.service.IUserBalanceService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,14 +20,13 @@ import java.util.List;
  * @author luochen
  * @since 2022-07-12
  */
-
 @Api(tags = "平台余额")
 @RestController
 @RequestMapping("/user/user-balance")
+@RequiredArgsConstructor(onConstructor = @__(@Lazy))
 public class UserBalanceController {
 
-    @Autowired
-    private IUserBalanceService userBalanceService;
+    private final IUserBalanceService userBalanceService;
 
     @ApiOperation(value = "全平台余额")
     @GetMapping("/inquireBalance")
