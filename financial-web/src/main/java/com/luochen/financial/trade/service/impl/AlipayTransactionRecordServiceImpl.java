@@ -7,6 +7,8 @@ import com.luochen.financial.trade.entity.AlipayTransactionRecord;
 import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.mapper.AlipayTransactionRecordMapper;
 import com.luochen.financial.trade.service.IAlipayTransactionRecordService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +23,7 @@ import java.util.Map;
  * @since 2022-07-19
  */
 @Service
+@RequiredArgsConstructor(onConstructor = @__(@Lazy))
 public class AlipayTransactionRecordServiceImpl extends ServiceImpl<AlipayTransactionRecordMapper, AlipayTransactionRecord> implements IAlipayTransactionRecordService {
 
     @Override

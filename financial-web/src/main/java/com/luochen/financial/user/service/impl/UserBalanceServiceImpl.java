@@ -8,6 +8,8 @@ import com.luochen.financial.user.entity.UserAssets;
 import com.luochen.financial.user.entity.UserBalance;
 import com.luochen.financial.user.mapper.UserBalanceMapper;
 import com.luochen.financial.user.service.IUserBalanceService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -24,6 +26,7 @@ import java.util.List;
  * @since 2022-07-12
  */
 @Service
+@RequiredArgsConstructor(onConstructor = @__(@Lazy))
 public class UserBalanceServiceImpl extends ServiceImpl<UserBalanceMapper, UserBalance> implements IUserBalanceService {
 
     @Override

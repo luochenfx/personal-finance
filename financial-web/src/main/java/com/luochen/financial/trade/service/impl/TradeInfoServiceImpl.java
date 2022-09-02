@@ -7,8 +7,8 @@ import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.entity.TradeInfo;
 import com.luochen.financial.trade.mapper.TradeInfoMapper;
 import com.luochen.financial.trade.service.ITradeInfoService;
-import com.luochen.financial.user.service.IUserBalanceService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -24,10 +24,9 @@ import java.util.List;
  * @since 2022-07-12
  */
 @Service
+@RequiredArgsConstructor(onConstructor = @__(@Lazy))
 public class TradeInfoServiceImpl extends ServiceImpl<TradeInfoMapper, TradeInfo> implements ITradeInfoService {
 
-    @Autowired
-    private IUserBalanceService userBalanceService;
 
     @Override
     public List<TradeInfo> list(TradeInfo tradeInfo) {

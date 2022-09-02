@@ -7,6 +7,8 @@ import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.entity.WxTransactionRecord;
 import com.luochen.financial.trade.mapper.WxTransactionRecordMapper;
 import com.luochen.financial.trade.service.IWxTransactionRecordService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -21,6 +23,7 @@ import java.util.List;
  * @since 2022-07-26
  */
 @Service
+@RequiredArgsConstructor(onConstructor = @__(@Lazy))
 public class WxTransactionRecordServiceImpl extends ServiceImpl<WxTransactionRecordMapper, WxTransactionRecord> implements IWxTransactionRecordService {
 
     @Override
