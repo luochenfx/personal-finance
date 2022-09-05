@@ -18,7 +18,8 @@
 
 	<modules>
 		<module>financial-web</module>
-	</modules>
+        <module>db-import</module>
+    </modules>
 
 	<properties>
 		<!-- project version -->
@@ -38,6 +39,7 @@
 		<json-web-token>0.11.5</json-web-token>
 		<knife4j>3.0.3</knife4j>
 		<podam>7.2.9.RELEASE</podam>
+		<hutool>5.8.5</hutool>
 
 	</properties>
 	<dependencies>
@@ -123,13 +125,20 @@
 			<artifactId>knife4j-spring-boot-starter</artifactId>
 			<version>${knife4j}</version>
 		</dependency>
-		<!-- 对象填充工具 -->
+		<!-- 对象随机填充工具 -->
 		<dependency>
 			<groupId>uk.co.jemos.podam</groupId>
 			<artifactId>podam</artifactId>
 			<version>${podam}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>${hutool}</version>
+		</dependency>
+
 
 
 
