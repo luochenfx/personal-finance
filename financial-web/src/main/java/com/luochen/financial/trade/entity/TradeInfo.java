@@ -130,6 +130,10 @@ public class TradeInfo implements Serializable {
 	@TableField(exist = false)
 	private String dateTimeRange;
 
+    public String[] splitDateTimeRange(){
+        return dateTimeRange.split(" - ");
+    }
+
     /**
      * 账单来源
      */

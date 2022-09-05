@@ -33,7 +33,7 @@ public class TradeInfoServiceImpl extends ServiceImpl<TradeInfoMapper, TradeInfo
         LambdaQueryWrapper<TradeInfo> query = Wrappers.lambdaQuery(tradeInfo);
         String dateTimeRange = tradeInfo.getDateTimeRange();
         if (StringUtils.hasText(dateTimeRange)) {
-            String[] split = dateTimeRange.split(" - ");
+            String[] split = tradeInfo.splitDateTimeRange();
             query.between(TradeInfo::getPayTime, split[0], split[1]);
         }
         query.orderByAsc(TradeInfo::getPayTime);

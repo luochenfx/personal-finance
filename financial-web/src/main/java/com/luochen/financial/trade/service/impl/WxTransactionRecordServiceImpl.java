@@ -37,7 +37,7 @@ public class WxTransactionRecordServiceImpl extends ServiceImpl<WxTransactionRec
         query.orderByDesc(WxTransactionRecord::getPayTime);
         String dateTimeRange = wxTransactionRecord.getDateTimeRange();
         if (StringUtils.hasText(dateTimeRange)) {
-            String[] split = dateTimeRange.split(" - ");
+            String[] split = wxTransactionRecord.splitDateTimeRange();
             query.between(WxTransactionRecord::getPayTime, split[0], split[1]);
         }
         return list(query);

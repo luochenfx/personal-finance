@@ -150,6 +150,10 @@ public class AlipayTransactionRecord implements Serializable {
     @TableField(exist = false)
     private String dateTimeRange;
 
+    public String[] splitDateTimeRange(){
+        return dateTimeRange.split(" - ");
+    }
+
     /**
      * 收支
      */
