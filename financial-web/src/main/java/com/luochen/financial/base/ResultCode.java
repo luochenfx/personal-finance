@@ -1,5 +1,8 @@
 package com.luochen.financial.base;
 
+/**
+ * 常见的返回码
+ */
 public enum ResultCode {
     SUCCESS(200, "请求成功"),
     FAIL(500, "请求失败"),

@@ -15,8 +15,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.LinkedHashMap;
 
+/**
+ * 对Controller返回的{@code @ResponseBody}or {@code ResponseEntity} 后,{@code HttpMessageConverter} 类型转换之前拦截, 进行相应的处理操作后,再将结果返回
+ */
 @Slf4j
 @ControllerAdvice
 public class BaseResponseBodyAdvice implements ResponseBodyAdvice<Object>  {
@@ -26,7 +28,6 @@ public class BaseResponseBodyAdvice implements ResponseBodyAdvice<Object>  {
         ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         assert sra != null;
         HttpServletRequest request = sra.getRequest();
-        //判断请求是否有RESPONSE_RESULT_ANN标记
         ResponseResult responseResult = (ResponseResult) request.getAttribute(ResponseResultInterceptor.WRAP_RESPONSE_DATA);
         return responseResult == null;
     }
