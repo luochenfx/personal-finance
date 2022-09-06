@@ -33,11 +33,11 @@ public interface IUserBalanceService extends IService<UserBalance> {
 
     /**
      * add user balance
+     *
      * @param platFrom {@link UserBalance.DefaultPlatFrom}
-     * @param userId 用户id
-     * @return boolean
+     * @param userId   用户id
      */
-    UserBalance addNewPlatFrom(UserBalance.DefaultPlatFrom platFrom, Long userId);
+    void addNewPlatFrom(UserBalance.DefaultPlatFrom platFrom, Long userId);
 
     /**
      * 余额查询

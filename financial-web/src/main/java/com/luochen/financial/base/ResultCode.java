@@ -5,8 +5,7 @@ package com.luochen.financial.base;
  */
 public enum ResultCode {
     SUCCESS(200, "请求成功"),
-    FAIL(500, "请求失败"),
-    HTTP_ERROR(400,"http请求错误");
+    FAIL(500, "请求失败");
     private final Integer code;
     private final String message;
 

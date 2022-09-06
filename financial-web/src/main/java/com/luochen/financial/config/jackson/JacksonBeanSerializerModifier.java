@@ -10,7 +10,10 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * Jackson Bean 序列化器
+ * <p>声明了不同类型的参数的空值转换配置</p>
  * @author luochenfx
+ * @see CustomizeNullJsonSerializer
  */
 public class JacksonBeanSerializerModifier extends BeanSerializerModifier {
 

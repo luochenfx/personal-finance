@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
 
 /**
+ * 针对空值处理
  * @author luochenfx
  */
 public class CustomizeNullJsonSerializer {

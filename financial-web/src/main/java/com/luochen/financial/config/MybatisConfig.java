@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * 配置MybatisPlus拦截器
  * @author luochenfx
  */
 @Configuration

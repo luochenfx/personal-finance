@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -63,12 +62,8 @@ public class AlipayTransactionRecordServiceImpl extends ServiceImpl<AlipayTransa
 
     @Override
     public boolean saveBatch(Collection<AlipayTransactionRecord> list){
-        return addListExcludePk(list,new ArrayList<>());
-    }
-
-    private boolean addListExcludePk(Collection<AlipayTransactionRecord> list,List<String> pk){
-        list.removeIf(data -> pk.contains(data.getTradeNo()));
         return saveOrUpdateBatch(list);
     }
+
 
 }

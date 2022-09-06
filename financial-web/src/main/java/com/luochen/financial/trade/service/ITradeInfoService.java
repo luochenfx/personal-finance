@@ -33,8 +33,8 @@ public interface ITradeInfoService extends IService<TradeInfo> {
 
     /**
      * 添加交易信息
+     *
      * @param tradeInfo 交易信息
-     * @return 是否添加成功
      */
-    boolean addTradeInfo(TradeInfo tradeInfo);
+    void addTradeInfo(TradeInfo tradeInfo);
 }

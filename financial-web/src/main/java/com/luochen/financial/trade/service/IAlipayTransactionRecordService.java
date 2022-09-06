@@ -43,6 +43,11 @@ public interface IAlipayTransactionRecordService extends IService<AlipayTransact
      */
     double spendingThisMonth();
 
+    /**
+     * 读取上传的文件
+     * @param file 文件
+     * @throws IOException 失败或中断的 I/O 操作
+     */
     void fileRead(MultipartFile file) throws IOException;
 
 }

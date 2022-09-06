@@ -50,9 +50,9 @@ public class TradeInfoServiceImpl extends ServiceImpl<TradeInfoMapper, TradeInfo
         return baseMapper.spendingThisMonth();
     }
 
-    public boolean addTradeInfo(TradeInfo tradeInfo) {
+    public void addTradeInfo(TradeInfo tradeInfo) {
         tradeInfo.setRecordSource(TradeInfo.RecordSource.MANUAL.getValue());
         tradeInfo.setCreateTime(new Date());
-        return save(tradeInfo);
+        save(tradeInfo);
     }
 }

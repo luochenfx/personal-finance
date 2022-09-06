@@ -17,12 +17,21 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 对Controller返回的{@code @ResponseBody}or {@code ResponseEntity} 后,{@code HttpMessageConverter} 类型转换之前拦截, 进行相应的处理操作后,再将结果返回
+ * 对Controller返回的{@code @ResponseBody} or {@code ResponseEntity} 后,
+ * {@code HttpMessageConverter} 类型转换之前拦截,
+ * 进行相应的处理操作后,再将结果返回,需要注意的是无法响应字符串
+ * @see ResponseResult
  */
 @Slf4j
 @ControllerAdvice
 public class BaseResponseBodyAdvice implements ResponseBodyAdvice<Object>  {
 
+    /**
+     * 基于自定义属性判断是否需要针对返回值进行包装
+     * @param returnType the return type
+     * @param converterType the selected converter type
+     * @return boolean
+     */
     @Override
     public boolean supports(@NotNull MethodParameter returnType, @NotNull Class<? extends HttpMessageConverter<?>> converterType) {
         ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();

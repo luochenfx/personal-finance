@@ -55,8 +55,8 @@ public class UserBalanceServiceImpl extends ServiceImpl<UserBalanceMapper, UserB
     }
 
     @Override
-    public UserBalance addNewPlatFrom(UserBalance.DefaultPlatFrom platFrom, Long userId) {
-        return addNewPlatFrom(platFrom.getValue(), userId);
+    public void addNewPlatFrom(UserBalance.DefaultPlatFrom platFrom, Long userId) {
+        addNewPlatFrom(platFrom.getValue(), userId);
     }
 
     @Override
