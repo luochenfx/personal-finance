@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.luochen.financial.base.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -29,7 +30,7 @@ import java.util.Optional;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("alipay_transaction_record")
-public class AlipayTransactionRecord implements Serializable {
+public class AlipayTransactionRecord extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -152,6 +153,14 @@ public class AlipayTransactionRecord implements Serializable {
 
     public String[] splitDateTimeRange(){
         return dateTimeRange.split(" - ");
+    }
+
+    @Override
+    public BaseEntity correct() {
+        if (payTime == null){
+            payTime = createTime;
+        }
+        return this;
     }
 
     /**

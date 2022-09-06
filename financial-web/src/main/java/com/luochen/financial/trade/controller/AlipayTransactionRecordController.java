@@ -3,19 +3,19 @@ package com.luochen.financial.trade.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.luochen.financial.base.Response;
 import com.luochen.financial.trade.entity.AlipayTransactionRecord;
 import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.service.IAlipayTransactionRecordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +27,7 @@ import java.util.Map;
  * @author luochen
  * @since 2022-07-19
  */
+@Slf4j
 @Api(value = "支付宝交易记录", tags = "支付宝")
 @RestController
 @RequestMapping("/trade/alipay-transaction-record")
@@ -91,8 +92,13 @@ public class AlipayTransactionRecordController {
 
     @ApiOperation(value = "账单上传")
     @PostMapping("/upload")
-    public void uploadFile(String fileName, MultipartFile file){
-
+    public Response uploadFile(@RequestParam("file") MultipartFile file){
+        try {
+            alipayTransactionRecordService.fileRead(file);
+            return Response.success();
+        } catch (IOException e) {
+            return Response.fail(e.getMessage());
+        }
     }
 
 

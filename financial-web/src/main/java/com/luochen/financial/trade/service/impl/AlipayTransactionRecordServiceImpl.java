@@ -1,16 +1,23 @@
 package com.luochen.financial.trade.service.impl;
 
+import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.luochen.financial.file.FileReadListenerImpl;
 import com.luochen.financial.trade.entity.AlipayTransactionRecord;
 import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.mapper.AlipayTransactionRecordMapper;
 import com.luochen.financial.trade.service.IAlipayTransactionRecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -46,6 +53,22 @@ public class AlipayTransactionRecordServiceImpl extends ServiceImpl<AlipayTransa
     @Override
     public double spendingThisMonth() {
         return baseMapper.spendingThisMonth();
+    }
+
+    @Async
+    public void fileRead(MultipartFile file) throws IOException {
+        FileReadListenerImpl<AlipayTransactionRecordServiceImpl, AlipayTransactionRecord> listener = new FileReadListenerImpl<>(this);
+        EasyExcel.read(file.getInputStream(), AlipayTransactionRecord.class, listener).sheet().doRead();
+    }
+
+    @Override
+    public boolean saveBatch(Collection<AlipayTransactionRecord> list){
+        return addListExcludePk(list,new ArrayList<>());
+    }
+
+    private boolean addListExcludePk(Collection<AlipayTransactionRecord> list,List<String> pk){
+        list.removeIf(data -> pk.contains(data.getTradeNo()));
+        return saveOrUpdateBatch(list);
     }
 
 }
