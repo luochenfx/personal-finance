@@ -1,6 +1,7 @@
 # Base images 基础镜像 选用 jre环境 减少镜像的体积
 FROM openjdk:8-jre-alpine
 
+LABEL version="0.0.1"
 #MAINTAINER 维护者信息
 MAINTAINER luochen<luochenex@gmail.com>
 
