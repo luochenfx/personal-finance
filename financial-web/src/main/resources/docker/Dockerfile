@@ -1,5 +1,5 @@
-# Base images 基础镜像
-FROM java:8u111
+# Base images 基础镜像 选用 jre环境 减少镜像的体积
+FROM openjdk:8-jre-alpine
 
 #MAINTAINER 维护者信息
 MAINTAINER luochen<luochenex@gmail.com>
@@ -10,9 +10,6 @@ VOLUME /home
 #ADD  将app.jar文件将拷贝到容器中，默认拷贝到根路径下
 # 因为目录不允许超过当前目录，所以将jar复制到同级
 ADD app.jar app.jar
-
-#修改app.jar这个文件的访问时间和修改时间为当前时间，而不会修改文件的内容。
-RUN bash -c "touch /app.jar"
 
 #EXPOSE 容器暴露端口
 EXPOSE 8080
