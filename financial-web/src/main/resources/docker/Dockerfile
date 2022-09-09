@@ -8,7 +8,7 @@ MAINTAINER luochen<luochenex@gmail.com>
 VOLUME /home
 
 #ADD  将app.jar文件将拷贝到容器中，默认拷贝到根路径下
-#也可以直接写成ADD app.jar /app.jar 或者 ADD app.jar /
+# 因为目录不允许超过当前目录，所以将jar复制到同级
 ADD app.jar app.jar
 
 #修改app.jar这个文件的访问时间和修改时间为当前时间，而不会修改文件的内容。
