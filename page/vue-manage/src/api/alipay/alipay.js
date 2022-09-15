@@ -8,10 +8,3 @@ export function getList(params) {
   })
 }
 
-export function getDetail(id) {
-  return request({
-    url: '/sys/baseOrg/detail',
-    method: 'get',
-    params: { id }
-  })
-}
