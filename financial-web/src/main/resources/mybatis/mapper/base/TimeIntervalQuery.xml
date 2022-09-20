@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luochen.financial.base.mapper.TimeIntervalQuery">
+
+
+    <!--  上个月的查询条件  -->
+    <sql id="lastMonth">
+        PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format( ${timeField}, '%Y%m' ) ) = 1
+    </sql>
+
+</mapper>
