@@ -44,6 +44,12 @@ public interface IAlipayTransactionRecordService extends IService<AlipayTransact
     double spendingThisMonth();
 
     /**
+     * 获取上个月消费金额
+     * @return 上个月消费金额
+     */
+    double spendingLastMonth();
+
+    /**
      * 读取上传的文件
      * @param file 文件
      * @throws IOException 失败或中断的 I/O 操作

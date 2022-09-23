@@ -59,4 +59,11 @@ public class WxTransactionRecordController {
     }
 
 
+    @ApiOperation(value = "获取上个月消费金额")
+    @GetMapping("/spendingLastMonth")
+    public double spendingLastMonth(){
+        return wxTransactionRecordService.spendingLastMonth();
+    }
+
+
 }

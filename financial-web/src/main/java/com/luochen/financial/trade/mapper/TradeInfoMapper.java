@@ -25,4 +25,10 @@ public interface TradeInfoMapper extends BaseMapper<TradeInfo> {
      * @return 本月消费金额
      */
     double spendingThisMonth();
+
+    /**
+     * 上个月消费金额
+     * @return 消费金额总数
+     */
+    double spendingLastMonth();
 }

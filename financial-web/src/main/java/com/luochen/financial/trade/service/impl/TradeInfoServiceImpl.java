@@ -50,6 +50,11 @@ public class TradeInfoServiceImpl extends ServiceImpl<TradeInfoMapper, TradeInfo
         return baseMapper.spendingThisMonth();
     }
 
+    @Override
+    public double spendingLastMonth() {
+        return baseMapper.spendingLastMonth();
+    }
+
     public void addTradeInfo(TradeInfo tradeInfo) {
         tradeInfo.setRecordSource(TradeInfo.RecordSource.MANUAL.getValue());
         tradeInfo.setCreateTime(new Date());

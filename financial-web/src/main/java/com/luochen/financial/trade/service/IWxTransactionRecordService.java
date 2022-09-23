@@ -34,4 +34,10 @@ public interface IWxTransactionRecordService extends IService<WxTransactionRecor
      * @return 本月消费金额
      */
     double spendingThisMonth();
+
+    /**
+     * 获取上个月消费金额
+     * @return 上个月消费金额
+     */
+    double spendingLastMonth();
 }

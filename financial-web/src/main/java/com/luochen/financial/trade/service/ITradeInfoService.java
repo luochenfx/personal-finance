@@ -32,6 +32,12 @@ public interface ITradeInfoService extends IService<TradeInfo> {
     double spendingThisMonth();
 
     /**
+     * 获取上个月消费金额
+     * @return 上个月消费金额
+     */
+    double spendingLastMonth();
+
+    /**
      * 添加交易信息
      *
      * @param tradeInfo 交易信息

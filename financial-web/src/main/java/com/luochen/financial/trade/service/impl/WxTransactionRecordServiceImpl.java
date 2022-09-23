@@ -47,4 +47,9 @@ public class WxTransactionRecordServiceImpl extends ServiceImpl<WxTransactionRec
     public double spendingThisMonth() {
         return baseMapper.spendingThisMonth();
     }
+
+    @Override
+    public double spendingLastMonth() {
+        return baseMapper.spendingLastMonth();
+    }
 }

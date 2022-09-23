@@ -4,6 +4,7 @@ package com.luochen.financial.trade.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.luochen.financial.base.Response;
+import com.luochen.financial.filter.ResponseResult;
 import com.luochen.financial.trade.entity.AlipayTransactionRecord;
 import com.luochen.financial.trade.entity.TradeIncomeExpenditure;
 import com.luochen.financial.trade.service.IAlipayTransactionRecordService;
@@ -90,8 +91,15 @@ public class AlipayTransactionRecordController {
         return alipayTransactionRecordService.spendingThisMonth();
     }
 
+    @ApiOperation(value = "获取上个月消费金额")
+    @GetMapping("/spendingLastMonth")
+    public double spendingLastMonth(){
+        return alipayTransactionRecordService.spendingLastMonth();
+    }
+
     @ApiOperation(value = "账单上传")
     @PostMapping("/upload")
+    @ResponseResult
     public Response uploadFile(@RequestParam("file") MultipartFile file){
         try {
             alipayTransactionRecordService.fileRead(file);

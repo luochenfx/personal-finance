@@ -50,4 +50,16 @@
         AND income_expenditure = '支出'
     </select>
 
+    <select id="spendingLastMonth" resultType="java.lang.Double">
+        SELECT
+        IFNULL( sum( amount ), 0 ) total
+        FROM
+        wx_transaction_record
+        WHERE
+        <include refid="com.luochen.financial.base.mapper.TimeIntervalQuery.lastMonth">
+            <property name="timeField" value="pay_time"/>
+        </include>
+        AND income_expenditure = '支出'
+    </select>
+
 </mapper>

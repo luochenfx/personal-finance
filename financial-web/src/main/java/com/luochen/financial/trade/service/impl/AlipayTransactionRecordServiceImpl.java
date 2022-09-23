@@ -54,6 +54,11 @@ public class AlipayTransactionRecordServiceImpl extends ServiceImpl<AlipayTransa
         return baseMapper.spendingThisMonth();
     }
 
+    @Override
+    public double spendingLastMonth() {
+        return baseMapper.spendingLastMonth();
+    }
+
     @Async
     public void fileRead(MultipartFile file) throws IOException {
         FileReadListenerImpl<AlipayTransactionRecordServiceImpl, AlipayTransactionRecord> listener = new FileReadListenerImpl<>(this);
