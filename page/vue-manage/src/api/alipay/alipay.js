@@ -1,10 +1,11 @@
 import request from '@/utils/request'
 
-export function getList(params) {
+const alipay = '/trade/alipay-transaction-record'
+
+export function spendingLastMonth() {
   return request({
-    url: '/vue-admin-template/table/list',
-    method: 'get',
-    params
+    url: alipay + '/spendingLastMonth',
+    method: 'get'
   })
 }
 
