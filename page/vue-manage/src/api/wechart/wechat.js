@@ -1,10 +1,11 @@
 import request from '@/utils/request'
 
-export function getList(params) {
+const wx = '/trade/wx'
+
+export function spendingLastMonth() {
   return request({
-    url: '/vue-admin-template/table/list',
-    method: 'get',
-    params
+    url: wx + '/spendingLastMonth',
+    method: 'get'
   })
 }
 
