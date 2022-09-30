@@ -22,7 +22,7 @@
           <div class="card-panel-text">
             支付宝支出
           </div>
-          <count-to :start-val="0" :end-val="1212" :duration="3000" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="alipay" :duration="3000" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -57,14 +57,29 @@
 
 <script>
 import CountTo from 'vue-count-to'
+import { spendingLastMonth } from '@/api/alipay/alipay'
 
 export default {
   components: {
     CountTo
   },
+  data() {
+    return {
+      alipay: 0,
+      listLoading: true
+    }
+  },
+  created() {
+    this.spendingLastMonth()
+  },
   methods: {
     handleSetLineChartData(type) {
       this.$emit('handleSetLineChartData', type)
+    },
+    spendingLastMonth() {
+      spendingLastMonth().then(response => {
+        this.alipay = response.data
+      })
     }
   }
 }
