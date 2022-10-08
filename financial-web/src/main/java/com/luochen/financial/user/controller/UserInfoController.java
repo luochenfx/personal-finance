@@ -31,13 +31,14 @@ public class UserInfoController {
         return new LoginInfo("admin-token");
     }
     @ApiOperation(value = "获取用户信息")
-    @GetMapping("/getInfo")
-    public void getInfo(@RequestParam("token") String token){
+    @GetMapping("/info")
+    public UserInfoVo getInfo(@RequestParam("token") String token){
         UserInfoVo vo = new UserInfoVo();
         vo.setName("admin");
         vo.setAvatar("https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
         vo.setIntroduction("admin - introduction");
         vo.setRoles(Collections.singletonList("admin"));
+        return vo;
     }
     @ApiOperation(value = "登出")
     @PostMapping("/logout")
