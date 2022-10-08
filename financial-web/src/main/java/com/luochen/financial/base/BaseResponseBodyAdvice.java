@@ -1,5 +1,6 @@
 package com.luochen.financial.base;
 
+import cn.hutool.json.JSONUtil;
 import com.luochen.financial.filter.ResponseResult;
 import com.luochen.financial.interceptor.ResponseResultInterceptor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +44,12 @@ public class BaseResponseBodyAdvice implements ResponseBodyAdvice<Object>  {
 
     @Override
     public Object beforeBodyWrite(Object body, @NotNull MethodParameter returnType, @NotNull MediaType selectedContentType, @NotNull Class<? extends HttpMessageConverter<?>> selectedConverterType, @NotNull ServerHttpRequest request, @NotNull ServerHttpResponse response) {
+        if (body == null) {
+            return Response.success();
+        }
+        if (body instanceof String) {
+            return JSONUtil.toJsonStr(Response.success(body));
+        }
         if (body instanceof Exception) {
             return Response.fail(body);
         } else if (body instanceof Response) {
