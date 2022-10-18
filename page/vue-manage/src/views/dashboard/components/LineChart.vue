@@ -6,6 +6,7 @@
 import echarts from 'echarts'
 require('echarts/theme/macarons') // echarts theme
 import resize from './mixins/resize'
+import { incomeExpenditureByLastMonth } from '@/api/alipay/alipay'
 
 export default {
   mixins: [resize],
@@ -33,7 +34,8 @@ export default {
   },
   data() {
     return {
-      chart: null
+      chart: null,
+      alipayChart: null
     }
   },
   watch: {
@@ -56,7 +58,15 @@ export default {
     this.chart.dispose()
     this.chart = null
   },
+  created() {
+    this.incomeExpenditureByLastMonth()
+  },
   methods: {
+    incomeExpenditureByLastMonth() {
+      incomeExpenditureByLastMonth().then(response => {
+        this.alipayChart = response.data
+      })
+    },
     initChart() {
       this.chart = echarts.init(this.$el, 'macarons')
       this.setOptions(this.chartData)

@@ -9,7 +9,7 @@
           <div class="card-panel-text">
             微信支出
           </div>
-          <count-to :start-val="0" :end-val="2400" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="wx" :duration="2600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -35,7 +35,7 @@
           <div class="card-panel-text">
             其他支出
           </div>
-          <count-to :start-val="0" :end-val="280" :duration="3200" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="0" :duration="1200" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -57,7 +57,8 @@
 
 <script>
 import CountTo from 'vue-count-to'
-import { spendingLastMonth } from '@/api/alipay/alipay'
+import { spendingLastMonth as alipaySpending } from '@/api/alipay/alipay'
+import { spendingLastMonth as wxSpending } from '@/api/wechart/wechat'
 
 export default {
   components: {
@@ -66,19 +67,26 @@ export default {
   data() {
     return {
       alipay: 0,
+      wx: 0,
       listLoading: true
     }
   },
   created() {
-    this.spendingLastMonth()
+    this.getAlipaySpending()
+    this.getWxSpending()
   },
   methods: {
     handleSetLineChartData(type) {
       this.$emit('handleSetLineChartData', type)
     },
-    spendingLastMonth() {
-      spendingLastMonth().then(response => {
+    getAlipaySpending() {
+      alipaySpending().then(response => {
         this.alipay = response.data
+      })
+    },
+    getWxSpending() {
+      wxSpending().then(response => {
+        this.wx = response.data
       })
     }
   }

@@ -23,7 +23,7 @@ public interface IAlipayTransactionRecordService extends IService<AlipayTransact
      * 按月份查询收支情况
      * @return TradeIncomeExpenditure
      */
-    List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
+    List<TradeIncomeExpenditure> getIncomeExpenditureByLastMonth();
 
     /**
      * 查询所有转账记录

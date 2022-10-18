@@ -23,7 +23,7 @@ public interface AlipayTransactionRecordMapper extends BaseMapper<AlipayTransact
      * 按月份查询收支情况
      * @return 月份和收支
      */
-    List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth();
+    List<TradeIncomeExpenditure> getIncomeExpenditureByLastMonth();
 
     /**
      * 查询所有转账记录

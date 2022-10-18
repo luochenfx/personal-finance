@@ -61,10 +61,10 @@ public class AlipayTransactionRecordController {
         return alipayTransactionRecordService.list(query);
     }
 
-    @ApiOperation(value = "支付宝本月收支统计", notes = "按月份查询收支情况")
-    @GetMapping("/incomeExpenditureByAllMonth")
-    public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth(){
-        return alipayTransactionRecordService.getIncomeExpenditureByAllMonth();
+    @ApiOperation(value = "支付宝上月收支统计", notes = "按月份查询收支情况")
+    @GetMapping("/incomeExpenditureByLastMonth")
+    public List<TradeIncomeExpenditure> getIncomeExpenditureByLastMonth(){
+        return alipayTransactionRecordService.getIncomeExpenditureByLastMonth();
     }
 
     /**

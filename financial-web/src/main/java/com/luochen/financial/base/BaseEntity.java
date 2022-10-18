@@ -9,5 +9,7 @@ public abstract class BaseEntity {
      * 实现该方法确保实体的正确性
      * @return BaseEntity
      */
-    public abstract BaseEntity correct();
+    public BaseEntity correct(){
+        return this;
+    };
 }

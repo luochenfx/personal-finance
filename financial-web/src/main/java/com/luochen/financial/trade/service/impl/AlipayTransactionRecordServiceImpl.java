@@ -33,8 +33,8 @@ import java.util.Map;
 public class AlipayTransactionRecordServiceImpl extends ServiceImpl<AlipayTransactionRecordMapper, AlipayTransactionRecord> implements IAlipayTransactionRecordService {
 
     @Override
-    public List<TradeIncomeExpenditure> getIncomeExpenditureByAllMonth() {
-        return baseMapper.getIncomeExpenditureByAllMonth();
+    public List<TradeIncomeExpenditure> getIncomeExpenditureByLastMonth() {
+        return baseMapper.getIncomeExpenditureByLastMonth();
     }
 
     public List<AlipayTransactionRecord> fundTransferOfAll() {

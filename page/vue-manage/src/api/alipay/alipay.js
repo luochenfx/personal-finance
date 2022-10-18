@@ -9,3 +9,9 @@ export function spendingLastMonth() {
   })
 }
 
+export function incomeExpenditureByLastMonth() {
+  return request({
+    url: alipay + '/incomeExpenditureByLastMonth',
+    method: 'get'
+  })
+}
